@@ -1,7 +1,33 @@
 ﻿@model IEnumerable<StarWars.Models.Planet>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Planetas";
 }
 
-<h1>Index</h1>
+<h1>Listado de todos los planetas</h1>
+<div>
+	@if (Model != null)
+	{
+		<table>
+			<tr>
+				<th>@Html.DisplayNameFor(model => model.Name)</th>
+				<th>Clima</th>
+				<th>Gravedad</th>
+			</tr>
+			@foreach (var i in Model)
+			{
+				<tr>
+					<td>@Html.DisplayFor(modelItem => i.Name)</td>
+					<td>@Html.DisplayFor(modelItem => i.Climate)</td>
+					<td>@Html.DisplayFor(modelItem => i.Gravity)</td>
+				</tr>
+			}
+		</table>
+	}
+	else
+		{
+		 <p>NO HAY PLANETAS DISPONIBLES.</p>	
+		}
+
+</div>
+

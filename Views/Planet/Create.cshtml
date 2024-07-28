@@ -1,9 +1,29 @@
-﻿@model StarWars.Models.Planet
+﻿@model Planet
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crea el planeta";
 }
-
+<div>
+    <form asp-action="Create" method="post">
+        <label asp-for="Name">Nombre: 
+            <input asp-for="Name" value="" />    
+        </label>
+        <br />
+        <br />
+        <label asp-for="Climate">Clima: 
+            <input type="text" name="Climate" value="" />    
+        </label>
+        <br />
+        <br />
+        <label asp-for="Gravity">Gravedad:
+            <input type="number" name="Gravity" value="" />
+        </label>
+        <br />
+        <br />
+        <input type="submit" value="Agregar Planeta" />
+        <br />
+    </form>
+</div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

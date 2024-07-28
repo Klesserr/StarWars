@@ -18,6 +18,10 @@ namespace StarWars.Controllers
         {
             _context = context;
         }
-        
+
+        public async Task<ActionResult> Index()
+        {
+            return View(await _context.People.ToListAsync());
+        }
     }
 }
