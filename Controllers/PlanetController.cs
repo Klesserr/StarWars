@@ -18,6 +18,9 @@ namespace StarWars.Controllers
         {
             _context = context;
         }
-
+        public async Task<Planet> Get()
+        {
+            return await _context.Planet.FirstOrDefaultAsync(p => p.Name == "Tatooine");
+        }
     }
 }
