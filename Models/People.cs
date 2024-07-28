@@ -9,9 +9,10 @@
         public Race? Race { get; set; }
      
         public string? Starshsips;
-
-        public ICollection<Planet> Planet { get; set; }
-        public ICollection<Starship> Starship { get; set; }
+        public Planet Planet { get; set; }
+        public Starship Starship { get; set; }  
+        public ICollection<Planet> planet { get; set; }
+        public ICollection<Starship> starship { get; set; }
 
     }
 
