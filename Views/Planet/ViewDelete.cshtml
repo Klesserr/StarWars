@@ -1,0 +1,44 @@
+﻿@model StarWars.Models.Planet
+
+@{
+	ViewData["Title"] = "Borrar";
+}
+
+<h1>Delete</h1>
+<h4>Seguro que deseas borrar planeta @Model.Name</h4>
+
+<div>
+	<form asp-action="Delete"  method="post">
+		<table>
+			 <tr>
+				<div class="form-group">
+					<label asp-for="Name" class="control-label">
+						Nombre del planeta:
+					</label>
+					<input asp-for="Name" value="@Model.Name" readonly/>
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+				<br />
+				<div class="form-group">
+					<label asp-for="Climate" class="control-label">Clima:</label>
+					<input asp-for="Climate" value="@Model.Climate"/>
+					<span asp-validation-for="Climate" class="text-danger"></span>
+				</div>
+				<br />
+				<div class="form-group">
+					<label asp-for="Gravity" class="control-label">Gravedad:</label>
+					<input asp-for="Gravity" value="@Model.Gravity"/>
+					<span asp-validation-for="Gravity" class="text-danger"></span>
+				</div>
+				<br />
+			</tr> 
+		</table>
+		<input type="submit" value="Borrar planeta" />
+	</form>
+</div>
+<a asp-action="Index">Volver al listado de planetas</a>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

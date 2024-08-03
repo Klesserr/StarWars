@@ -1,0 +1,29 @@
+﻿@model StarWars.Models.Planet
+@{
+	ViewData["Title"] = "Editar";
+}
+<h1>Editar Planeta</h1>
+<div>
+	<form asp-action="Edit" method="post">
+		<label asp-for="Name">
+			Nombre del planeta:
+			<input asp-for="Name" name="Name" value="@Model.Name" readonly />
+		</label>
+		<br />
+		<br />
+		<label asp-for="Climate">
+			Clima del planeta:
+			<input asp-for="Climate" name="Climate" value="@Model.Climate"/>
+		</label>
+		<br />
+		<br />
+		<label asp-for="Gravity">
+			Clima del planeta:
+			<input asp-for="Gravity" name="Gravity" value="@Model.Gravity" />
+		</label>
+		<br />
+		<input type="submit" value="Agregar cambios" />
+	</form>
+
+	<a asp-action="Index">Volver al listado de planetas</a>
+</div>

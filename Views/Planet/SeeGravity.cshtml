@@ -1,0 +1,22 @@
+﻿@model IEnumerable<StarWars.Models.Planet>
+@{
+	ViewData["Title"] = "Gravedad mas de 4";
+}
+<table>
+	<tr>
+		<th>@Html.DisplayNameFor(model => model.Name)</th>
+		<th>@Html.DisplayNameFor(model => model.Gravity)</th>
+		<th>@Html.DisplayNameFor(model => model.Climate)</th>
+	</tr>
+
+
+	@foreach (var i in Model)
+	{
+		<tr>
+			<td>@Html.DisplayFor(modelItem => i.Name)</td>
+			<td>@Html.DisplayFor(modelItem => i.Gravity)</td>
+			<td>@Html.DisplayFor(modelItem => i.Climate)</td>
+		</tr>
+	}
+	<a asp-action="Index">Volver al listado de planetas</a>
+</table>

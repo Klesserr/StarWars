@@ -8,26 +8,64 @@
 <div>
 	@if (Model != null)
 	{
+		<form >
+			<button asp-action="Create">Crear nuevo planeta</button>
+		</form>
+		<form method="post">
+			<button asp-route="prueba">Gravedad Mayor de 4</button>
+		</form>
+
 		<table>
 			<tr>
+				<form>
+					<button asp-action="OrdenName">DESC</button>
+				</form>
+				<form>
+					<button asp-action="Index">ASC</button>
+				</form>
 				<th>@Html.DisplayNameFor(model => model.Name)</th>
-				<th>Clima</th>
-				<th>Gravedad</th>
+
+
+				<th>@Html.DisplayNameFor(model => model.Climate)</th>
+				<th>@Html.DisplayNameFor(model => model.Gravity)</th>
+				<th>Acciones</th>
 			</tr>
 			@foreach (var i in Model)
 			{
+
 				<tr>
+
 					<td>@Html.DisplayFor(modelItem => i.Name)</td>
 					<td>@Html.DisplayFor(modelItem => i.Climate)</td>
 					<td>@Html.DisplayFor(modelItem => i.Gravity)</td>
+
+					<td>
+						<form asp-action="ViewDelete" asp-route-namePlanet="@i.Name" method="post">
+							<input type="submit" value="Borrar" /> -
+
+						</form>
+
+					</td>
+					<td>
+						<form asp-action="EditView" asp-route-namePlanet="@i.Name" method="post">
+							<input type="submit" value="Editar" />
+						</form>
+					</td>
+
 				</tr>
+
 			}
 		</table>
+
+
 	}
 	else
-		{
-		 <p>NO HAY PLANETAS DISPONIBLES.</p>	
-		}
-
+	{
+		<p>NO HAY PLANETAS DISPONIBLES.</p>
+	}
+</div>
+<div>
+	<a asp-action="Edit" asp-route-id="@Model?">Edit</a> |
+	<a asp-action="Index">Back to List</a>
 </div>
 
