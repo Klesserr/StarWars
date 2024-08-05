@@ -90,17 +90,6 @@ namespace StarWars.Controllers
 		{
             return View(await _context.Planet.FirstOrDefaultAsync(p => p.Name == namePlanet));
         }
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		[Route("Gravedad/MayorDe4",Name ="prueba")]
-		public async Task<IActionResult> SeeGravity()
-		{
-			if (ModelState.IsValid)
-			{
-				return View(await _context.Planet.Where(p=>p.Gravity >=4).ToListAsync());
-			}
-			return View();
-		}
 		
 		public async Task<IActionResult> OrdenName()
 		{
@@ -108,6 +97,11 @@ namespace StarWars.Controllers
 
             return View ("Index",query);
 			
+		}
+		[Route("Clima",Name = "nameClimate")]
+		public async Task<IActionResult> ClimateView(string nameClimate) 
+		{
+			return View(await _context.Planet.Where(p => p.Climate == nameClimate).ToListAsync());
 		}
 
 		public async Task<IActionResult> Index(List<Planet> list)

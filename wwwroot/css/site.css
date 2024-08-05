@@ -1,22 +1,175 @@
 html {
-  font-size: 14px;
+    position: absolute;
+    width: 100%;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+:root {
+    --main: #ffb13a;
+    --font: 'Roboto','Oxygen',sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 20px;
+        width: 100%;
+        min-height: 100%;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.botones {
+    border: none;
+    color: black;
+    padding: 14px 28px;
+    cursor: pointer;
+    border-radius: 5px;
+    opacity: 0.7;
+}
+
+.estado {
+    background-color: white;
+    border: 2px solid #007bff;
+}
+
+    .estado:hover {
+        background: #0b7dda;
+        color: white;
+    }
+
+.boton-sith {
+    margin-top:1px;
+    background-color: #dc3545;
+    border: none;
+    cursor: pointer;
+    padding: 14px 28px;
+    color: black;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+    .boton-sith:hover {
+        background: #dc3545;    
+        color: white;
+    }
+
+
+
+
+.fondo-pantalla {
+    background-image: url(../images/fondo2.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.fondo-nav {
+    background-image: url(../images/cruzado.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Verdana;
+    font-size: 15px;
+}
+
+.titulo-nav {
+    font-size: 25px;
+    font-family: Alef,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: darkgoldenrod;
+    margin-bottom: auto;
+    opacity: 0.85;
+}
+
+.espacio {
+    left: 30px;
+}
+
+.espacio2 {
+    left: 75px;
+}
+
+.espacio-jedi {
+    left: 120px;
+}
+
+.espacio-sith {
+    left: 190px;
+}
+
+.espacio-personaje {
+    left: 250px;
+}
+
+.pie {
+    font-family: Caladea;
+    font-size: 18px;
+    font-weight: bold;
+    color: mediumvioletred;
+}
+
+.centrado {
+    font-family: var(--font);
+    font-size: 17px;
+    text-align: center;
+    text-justify: auto;
+    letter-spacing: 1.5px;
+    justify-items: center;
+    justify-content: center;
+    justify-self: center;
+    color: var(--main);
+    transform: perspective(250px) rotateX(28deg);
+}
+
+.boton-planet {
+    border-radius: 12px;
+    padding: 2px 5px;
+    background-color: #46a049;
+    border: 2px solid #04AA6D;
+}
+
+    .boton-planet:hover {
+        background-color: white;
+        color: #46a049;
+    }
+
+.boton-borrar-editar {
+    border: none;
+    color: black;
+    border-radius: 15px;
+    padding: 5px 12px;
+}
+
+
+.cambio {
+    color: var(--main);
+    border: none;
+    background-color: white;
+}
+
+td {
+    font-family: Verdana;
+}
+
+.centrado-planet {
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.planet-delete {
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    background-image: url(../images/planet.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: red;
 }

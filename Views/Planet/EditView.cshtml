@@ -1,29 +1,32 @@
 ﻿@model StarWars.Models.Planet
 @{
 	ViewData["Title"] = "Editar";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 <h1>Editar Planeta</h1>
-<div>
-	<form asp-action="Edit" method="post">
-		<label asp-for="Name">
-			Nombre del planeta:
-			<input asp-for="Name" name="Name" value="@Model.Name" readonly />
-		</label>
-		<br />
-		<br />
-		<label asp-for="Climate">
-			Clima del planeta:
-			<input asp-for="Climate" name="Climate" value="@Model.Climate"/>
-		</label>
-		<br />
-		<br />
-		<label asp-for="Gravity">
-			Clima del planeta:
-			<input asp-for="Gravity" name="Gravity" value="@Model.Gravity" />
-		</label>
-		<br />
-		<input type="submit" value="Agregar cambios" />
-	</form>
+<body>
+	<div class="container">
+		<form asp-action="Edit" method="post">
+			<label asp-for="Name" class="form-label">
+				<strong>Nombre del planeta</strong>
+				<input asp-for="Name" name="Name" value="@Model.Name" readonly class="form-control-plaintext" />
+			</label>
+			<br />
+			<br />
+			<label asp-for="Climate" class="form-label">
+				<strong>Clima</strong>
+				<input asp-for="Climate" name="Climate" value="@Model.Climate" />
+			</label>
+			<br />
+			<br />
+			<label asp-for="Gravity" class="form-label">
+				<strong>Gravedad</strong>
+				<input asp-for="Gravity" name="Gravity" value="@Model.Gravity" />
+			</label>
+			<br />
+			<input type="submit" value="Agregar cambios" class="btn btn-info" />
+		</form>
 
-	<a asp-action="Index">Volver al listado de planetas</a>
-</div>
+		<a asp-action="Index">Volver al listado de planetas</a>
+	</div>
+</body>

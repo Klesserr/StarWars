@@ -2,70 +2,83 @@
 
 @{
 	ViewData["Title"] = "Planetas";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
-
-<h1>Listado de todos los planetas</h1>
-<div>
-	@if (Model != null)
-	{
-		<form >
-			<button asp-action="Create">Crear nuevo planeta</button>
-		</form>
-		<form method="post">
-			<button asp-route="prueba">Gravedad Mayor de 4</button>
-		</form>
-
-		<table>
-			<tr>
-				<form>
-					<button asp-action="OrdenName">DESC</button>
-				</form>
-				<form>
-					<button asp-action="Index">ASC</button>
-				</form>
-				<th>@Html.DisplayNameFor(model => model.Name)</th>
-
-
-				<th>@Html.DisplayNameFor(model => model.Climate)</th>
-				<th>@Html.DisplayNameFor(model => model.Gravity)</th>
-				<th>Acciones</th>
-			</tr>
-			@foreach (var i in Model)
-			{
-
+<body>
+	<h1>Listado de todos los planetas</h1>
+	<div class="table">
+		@if (Model != null)
+		{
+			<form>
+				<button class="boton-planet" asp-action="Create">Crear nuevo planeta</button>
+			</form>
+			<br />
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th>@Html.DisplayNameFor(model => model.Name)</th>
+						<th>@Html.DisplayNameFor(model => model.Climate)</th>
+						<th>@Html.DisplayNameFor(model => model.Gravity)</th>
+						<th>Acciones</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
 				<tr>
+					<form>
+						<button asp-action="Index" class="cambio">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
+							</svg>
+						</button>
+					</form>
+					<form>
+						<button asp-action="OrdenName" class="cambio">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
+							</svg>
+						</button>
 
-					<td>@Html.DisplayFor(modelItem => i.Name)</td>
-					<td>@Html.DisplayFor(modelItem => i.Climate)</td>
-					<td>@Html.DisplayFor(modelItem => i.Gravity)</td>
-
-					<td>
-						<form asp-action="ViewDelete" asp-route-namePlanet="@i.Name" method="post">
-							<input type="submit" value="Borrar" /> -
-
-						</form>
-
-					</td>
-					<td>
-						<form asp-action="EditView" asp-route-namePlanet="@i.Name" method="post">
-							<input type="submit" value="Editar" />
-						</form>
-					</td>
-
+					</form>
+					<br />
 				</tr>
+						
+				
+				@foreach (var i in Model)
+				{
 
-			}
-		</table>
+					<tr>
+
+						<td>@Html.DisplayFor(modelItem => i.Name)</td>
+						<td>@Html.DisplayFor(modelItem => i.Climate)</td>
+						<td>@Html.DisplayFor(modelItem => i.Gravity)</td>
+
+						<td>
+							<form asp-action="ViewDelete" asp-route-namePlanet="@i.Name" method="post">
+								<input type="submit" value="Borrar" class="boton-borrar-editar btn-danger" />
+
+							</form>
+
+						</td>
+						<td>
+							<form asp-action="EditView" asp-route-namePlanet="@i.Name" method="post">
+								<input type="submit" value="Editar" class="boton-borrar-editar btn-primary" />
+							</form>
+						</td>
+
+					</tr>
+
+				}
+			</table>
 
 
-	}
-	else
-	{
-		<p>NO HAY PLANETAS DISPONIBLES.</p>
-	}
-</div>
+		}
+		else
+		{
+			<p>NO HAY PLANETAS DISPONIBLES.</p>
+		}
+	</div>
+</body>
 <div>
-	<a asp-action="Edit" asp-route-id="@Model?">Edit</a> |
-	<a asp-action="Index">Back to List</a>
+	<a asp-controller="Home" asp-action="Index">Volver al inicio</a>
 </div>
 

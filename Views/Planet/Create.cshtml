@@ -1,33 +1,46 @@
 ﻿@model Planet
 
 @{
-    ViewData["Title"] = "Crea el planeta";
+	ViewData["Title"] = "Crea el planeta";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
-<div>
-    <form asp-action="Create" method="post">
-        <label asp-for="Name">Nombre: 
-            <input asp-for="Name" name="Name" value="" />    
-        </label>
-        <br />
-        <br />
-        <label asp-for="Climate">Clima: 
-            <input type="text" name="Climate" value="" />    
-        </label>
-        <br />
-        <br />
-        <label asp-for="Gravity">Gravedad:
-            <input type="number" name="Gravity" value="" />
-        </label>
-        <br />
-        <br />
-        <input type="submit" value="Agregar Planeta" />
-        <br />
-    </form>
-</div>
-<div>
-    <a asp-action="Index">Volver al listado de planetas</a>
-</div>
+<body class="centrado-planet">
+	<h5>Datos del planeta</h5>
+	<div class="container row g-3 align-items-center" >
+		<form asp-action="Create" method="post">
+			<div class="container">
+			<label asp-for="Name" class="form-label">
+				Nombre
+				<input asp-for="Name" name="Name" value="" class="form-control" />
+			</label>
+			</div>
+			<div class="container">
+			<label asp-for="Climate" class="form-label">
+				Clima
+				<input type="text" name="Climate" value="" class="form-control" />
+			</label>
+			</div>
+			<div class="container">
+			<label asp-for="Gravity" class="form-label">
+				Gravedad
+				<input type="number" name="Gravity" value="" class="form-control"/>
+			</label>
+			</div>
+			<br />
+			<input type="submit" value="Agregar Planeta" class="btn btn-primary"/>
+			<br />
+		</form>
+	</div>
+	<br />
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Inicio</a>
+		<a asp-action="Index">Volver al listado de planetas</a>
+	</div>
+</body>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }
