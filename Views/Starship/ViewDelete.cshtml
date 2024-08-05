@@ -1,0 +1,42 @@
+﻿@model StarWars.Models.Starship
+@{
+	ViewData["Title"] = "BorrarNave";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<h4>Datos de la nave que vas a borrar</h4>
+<body>
+	<div class="table">
+		<form asp-action="Delete" method="post">
+
+			<label asp-for="Name" class="form-label">
+				<strong>Nombre</strong>
+				<input asp-for="Name" name="Name" value="@Model.Name" readonly class="form-control-plaintext "/>
+			</label>
+			<br />
+			<label asp-for="Model" class="form-label">
+				<strong>Modelo</strong>
+				<input asp-for="Model" name="Model" value="@Model.Model" readonly class="form-control-plaintext" />
+			</label>
+			<br />
+			<label asp-for="Longitude" class="form-label">
+				<strong>Longitud</strong>
+				<input asp-for="Longitude" name="Longitude" value="@Model.Longitude" readonly class="form-control-plaintext" />
+			</label>
+			<br />
+			<label asp-for="MaxPassengers" class="form-label">
+				<strong>Pasajeros</strong>
+				<input asp-for="MaxPassengers" name="MaxPassengers" value="@Model.MaxPassengers" readonly class="form-control-plaintext" />
+			</label>
+			<br />
+			<label asp-for="Armament" class="form-label">
+				<strong>Armamento</strong>
+				<input asp-for="Armament" name="Armament" value="@Model.Armament" readonly class="form-control-plaintext" />
+			</label>
+			<br />
+			<input type="submit" value="Borrar Nave"class="btn btn-danger"/>
+		</form>
+	</div>
+	<div class="container">
+		<a asp-action="Index">Volver</a>
+	</div>
+</body>

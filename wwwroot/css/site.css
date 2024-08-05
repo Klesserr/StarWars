@@ -167,9 +167,26 @@ td {
     text-align: center;
     justify-items: center;
     justify-content: center;
-    background-image: url(../images/planet.jpg);
+    background-image: url(../images/destruido.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: red;
+}
+.fondo-nave-destruida {
+    background-image: url(../images/nave.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.rojo{
+    color:red;
+}
+.fondo-nave-reparada {
+    background-image: url(../images/reparar.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }

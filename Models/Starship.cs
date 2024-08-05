@@ -7,6 +7,8 @@ namespace StarWars.Models
         [Key]
         public string Name { get; set; }
         public string Model { get; set; }
-        public int Gravity { get; set; }
+        public double Longitude { get; set; }
+        public double MaxPassengers { get; set; }
+        public string Armament { get; set; }
     }
 }

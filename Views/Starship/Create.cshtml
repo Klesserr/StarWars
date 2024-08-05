@@ -1,15 +1,51 @@
-﻿@model StarWars.Models.Starship
+﻿@model Starship
 
 @{
-    ViewData["Title"] = "Create";
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 
-<h1>Create</h1>
+<body class="centrado-planet">
+	<div class="container">
+		<form asp-action="Create" method="post">
+
+			<label asp-for="Name" class="form-label">
+				<strong>Nombre</strong>
+				<input asp-for="Name" name="Name" value="" class="form-control" />
+			</label>
+			<br />
+			<label asp-for="Model" class="form-label">
+				<strong>Modelo</strong>
+				<input asp-for="Model" name="Model" value="" class="form-control" />
+			</label>
+			<br />
+			<label asp-for="Longitude" class="form-label">
+				<strong>Longitud</strong>
+				<input asp-for="Longitude" name="Longitude" type="number" value="" class="form-control" />
+			</label>
+			<br />
+			<label asp-for="MaxPassengers" class="form-label">
+				<strong>Pasajeros a bordo</strong>
+				<input asp-for="MaxPassengers" name="MaxPassengers" type="number" value="" class="form-control" />
+			</label>
+			<br />
+			<label asp-for="Armament" class="form-label">
+				<strong>Arma</strong>
+				<input asp-for="Armament" name="Armament" type="text" value="" class="form-control" />
+			</label>
+			<br />
+
+			<input type="submit" value="Agregar Nave" />
+		</form>
+	</div>
+</body>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Ver todas las naves</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }

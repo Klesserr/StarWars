@@ -1,8 +1,11 @@
 ﻿@model StarWars.Models.Starship
 
 @{
-    ViewData["Title"] = "Delete";
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
-
-<h1>Delete</h1>
+<body class="fondo-nave-destruida">
+	<h3 class="centrado-planet rojo">Disparo acertado, nave destruida</h3>
+	<a asp-action="Index">Volver</a>
+</body>
 

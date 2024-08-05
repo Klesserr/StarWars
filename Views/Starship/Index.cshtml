@@ -1,9 +1,54 @@
 ﻿@model IEnumerable<StarWars.Models.Starship>
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_NavLayout.cshtml";
+	ViewData["Title"] = "Naves";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
+<body>
+	<h1>Naves Creadas</h1>
+	<form>
+		<button asp-action="Create">Crear Nave</button>
+		<button asp-action="Falcon"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-filled/48/star-wars-millenium-falcon.png" alt="star-wars-millenium-falcon" /></button>
+		<button asp-action="Index"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/star-wars-rebellion-ship.png" alt="star-wars-rebellion-ship" /></button>
+	</form>
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>@Html.DisplayNameFor(model => model.Name)</th>
+					<th>@Html.DisplayNameFor(model => model.Model)</th>
+					<th>@Html.DisplayNameFor(model => model.Longitude)</th>
+					<th>@Html.DisplayNameFor(model => model.MaxPassengers)</th>
+					<th>@Html.DisplayNameFor(model => model.Armament)</th>
+					<th>Acciones</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var i in Model)
+				{
+					<tr>
+						<td>@Html.DisplayFor(model => i.Name)</td>
+						<td>@Html.DisplayFor(model => i.Model)</td>
+						<td>@Html.DisplayFor(model => i.Longitude)</td>
+						<td>@Html.DisplayFor(model => i.MaxPassengers)</td>
+						<td>@Html.DisplayFor(model => i.Armament)</td>
+						<td>
+							<form asp-action="ViewDelete" method="post">
+								<input type="submit" asp-action="ViewDelete" asp-route-name="@i.Name" value="Borrar" />
+							</form>
+						</td>
+						<td>
+							<form asp-action="ViewEdit" method="post">
+								<input type="submit" asp-action="ViewEdit" asp-route-name="@i.Name" value="Editar"/>
+							</form>
+						</td>
+						
+					</tr>
+				}
 
-<h1>Naves Creadas</h1>
+			</tbody>
+		</table>
+	</div>
+</body>
 

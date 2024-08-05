@@ -108,7 +108,7 @@ namespace StarWars.Controllers
 		{
             if(list.Count > 0)
 			{
-				return View(await _context.Planet.OrderByDescending(p => p.Name).ToListAsync());
+				return View(list);
 			}
 			return View(await _context.Planet.ToListAsync());
 		}

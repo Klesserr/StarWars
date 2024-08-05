@@ -11,7 +11,7 @@
 	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
 	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
 </head>
-<body>
+<body class="">
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fondo-nav">
 			<div class="container-fluid">
@@ -67,13 +67,13 @@
 
 						<li class="nav-item">
 							<div class="dropdown espacio-sith">
-								<a asp-controller="" asp-action=""><button class="botones estado espacio-sith btn-sm">SITH</button></a>
+								<a asp-controller="" asp-action=""><button class="espacio-sith btn-sm boton-sith">SITH</button></a>
 							</div>
 						</li>
 
 						<li class="nav-item">
 							<div class="dropdown espacio-personaje">
-								<a asp-controller="People" asp-action="Index"><button class="botones estado espacio-personaje btn-sm">Crea tu personaje</button></a>
+								<a asp-controller="People" asp-action="Index"><button class="boton-sith espacio-personaje btn-sm">Crea tu personaje</button></a>
 							</div>
 						</li>
 					</ul>
@@ -87,7 +87,11 @@
 		</main>
 	</div>
 
-	
+	<footer class="border-top footer text-muted">
+		<div class="container pie">
+			STAR WARS - 2024 APLICACIÓN WEB DIDÁCTICA
+		</div>
+	</footer>
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
