@@ -1,8 +1,176 @@
 ﻿@model IEnumerable<StarWars.Models.People>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Listado de Personajes</h1>
+<a href="@Url.Action("Create","People")"><button>CREAR PERSONAJE</button></a>
+<body>
+	<table class="table">
+		<thead>
+		<th>@Html.DisplayNameFor(modelItem => modelItem.Name)</th>
+		<th>@Html.DisplayNameFor(modelItem => modelItem.LaserSword)</th>
+		<th>@Html.DisplayNameFor(modelItem => modelItem.Race)</th>
+		<th>@Html.DisplayNameFor(modelItem => modelItem.Order)</th>
+		<th>@Html.DisplayNameFor(modelItem => modelItem.PlanetName)</th>
+		<th>@Html.DisplayNameFor(modelItem => modelItem.StarshipName)</th>
+		<th></th>
+		<th></th>
+		<th></th>
+		</thead>
+		<tbody>
+			<tr>
+				@foreach (var i in @Model)
+				{
+				<tr>
+					<td>@Html.DisplayFor(model => i.Name)</td>
+					<td>@Html.DisplayFor(model => i.LaserSword)</td>
+					<td>@Html.DisplayFor(model => i.Race)</td>
+					<td>@Html.DisplayFor(model => i.Order)</td>
+					<td>@Html.DisplayFor(model => i.PlanetName)</td>
+					<td>@Html.DisplayFor(model => i.StarshipName)</td>
+					<td>
+						<form asp-action="Delete" method="post" asp-route-id="@i.Id">
+							<label asp-for="@i.Id">
+								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@i.Id">Borrar Personaje </button>
 
+								<div class="modal fade" id="deleteModal-@i.Id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModal-@i.Id" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="deleteModal-@i.Id">Este personaje va a ser borrado</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div><label asp-for="@i.Name">
+												<strong>Nombre</strong>
+												<input asp-for="@i.Name" type="text" value="@i.Name" readonly class="form-control-plaintext" />
+											</label><br />
+											<label asp-for="@i.LaserSword" class="form-label">
+												<strong>Color Sable</strong>
+												<input type="text" asp-for="@i.LaserSword" value="@i.LaserSword" readonly class="form-control-plaintext" />
+											</label>
+											<br />
+											<label asp-for="@i.Order">
+												<strong>Orden</strong>
+												<input type="text" asp-for="@i.Order" value="@i.Order" readonly class="form-control-plaintext" />
+											</label>
+											<br />
+											<label asp-for="@i.Race">
+												<strong>Raza</strong>
+												<input type="text" asp-for="@i.Race" value="@i.Race" readonly class="form-control-plaintext" />
+											</label>
+											<br />
+											<label asp-for="@i.StarshipName">
+												<strong>Nave</strong>
+												<input type="text" asp-for="@i.StarshipName" value="@i.StarshipName" readonly class="form-control-plaintext" />
+											</label>
+											<br />
+											<label asp-for="@i.PlanetName">
+												<strong>Planeta</strong>
+												<input type="text" asp-for="@i.PlanetName" value="@i.PlanetName" readonly class="form-control-plaintext" />
+											</label>
+											
+											<div class="modal-body">
+												Pulsa aceptar para borrar el personaje
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+												<input type="submit" value="Aceptar" class="btn btn-danger" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</label>
+						</form>
+					</td>
+					
+					<td>
+						<form asp-action="Edit" method="post" asp-route-id="@i.Id">
+							<label asp-for="@i.Id">
+								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editModal-@i.Id">Editar Personaje </button>
+
+								<div class="modal fade" id="editModal-@i.Id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal-@i.Id" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="editModal-@i.Id">Editar datos del personaje</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<label asp-for="@i.Name">
+												<strong>Nombre</strong>
+												<input asp-for="@i.Name" type="text" value="@i.Name" class="form-control" name="Name"/>
+											
+											</label>
+											<br />
+											<label asp-for="@i.LaserSword" class="form-label">
+												<strong>Color Sable</strong>
+												<select asp-for="@i.LaserSword" asp-items="@Html.GetEnumSelectList<Laser>();" name="LaserSword" id="LaserSword">
+													<option value="">Selecciona el color del laser</option>
+												</select>
+											
+											</label>
+											<br />
+											<label asp-for="@i.Order" class="form-label">
+												<strong>Orden</strong>
+												<select asp-for="@i.Order" asp-items="@Html.GetEnumSelectList<Order>();" name="Order" id="Order">
+													<option value="">Orden</option>
+												</select>
+											</label>
+											<br />
+											<label asp-for="@i.Race" class="form-label">
+												<strong>Raza</strong>
+												<select asp-for="@i.Race" asp-items="@Html.GetEnumSelectList<Race>();" name="Race" id="Race">
+													<option value="">Selecciona la raza</option>
+												</select>
+											</label>
+											<br />
+											 <label asp-for="@i.PlanetName" class="form-label">
+												<strong>Planeta</strong>
+												<select asp-for="@i.PlanetName" name="PlanetName" id="PlanetName">
+													<option value="@i.PlanetName">Selecciona el nombre del planeta</option>
+														@foreach (var namePlanet in ViewBag.PlanetName)
+														{
+															<option value="@namePlanet">@namePlanet</option>
+														}
+													</select>
+											</label> 
+											<br />
+											<label asp-for="@i.StarshipName">
+												<strong>Nave</strong>
+												<select asp-for="@i.StarshipName" name="StarshipName" id="StarshipName">
+													<option value="">Selecciona una nave</option>
+														@foreach (var nameStarShip in ViewBag.StarshipName)
+														{
+														<option value="@nameStarShip">@nameStarShip</option>
+														}
+													</select>
+											</label>
+											<br />
+											
+
+											<div class="modal-body">
+												Pulsa aceptar para agregar cambios al personaje
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+												<input type="submit" value="Aceptar" class="btn btn-info" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</label>
+						</form>
+						<td>
+						<form asp-action="Details" asp-route-id="@i.Id">
+							<a asp-action="Details">Ver detalles</a>
+						</form>
+						</td>
+						
+					</td>
+				</tr>
+				}
+			</tr>
+		</tbody>
+	</table>
+</body>

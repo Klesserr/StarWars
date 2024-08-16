@@ -1,0 +1,47 @@
+﻿@model StarWars.Models.People
+@{
+	ViewData["Title"] = "Vista Borrar";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<body>
+	<h1>Vista de viewDelete</h1>
+	<div class="container text-center">
+		<table class="table">
+			<form asp-action="Delete" method="post">
+				<label asp-for="Id">
+					<input type="hidden" asp-for="@Model.Id" />
+				</label>
+				<label asp-for="Name">
+					<strong>Nombre</strong>
+					<input asp-for="Name" type="text" value="@Model.Name" readonly class="form-control-plaintext" />
+				</label><br />
+				<label asp-for="LaserSword" class="form-label">
+					<strong>Color Sable</strong>
+					<input type="text" asp-for="LaserSword" value="@Model.LaserSword" readonly class="form-control-plaintext"/>
+				</label>
+				<br />
+				<label asp-for="Order">
+					<strong>Orden</strong>
+					<input type="text" asp-for="Order" value="@Model.Order" readonly class="form-control-plaintext" />
+				</label>
+				<br />
+				<label asp-for="Race">
+					<strong>Raza</strong>
+					<input type="text" asp-for="Race" value="@Model.Race" readonly class="form-control-plaintext" />
+				</label>
+				<br />
+				<label asp-for="StarshipName">
+					<strong>Nave</strong>
+					<input type="text" asp-for="StarshipName" value="@Model.StarshipName" readonly class="form-control-plaintext" />
+				</label>
+				<br />
+				<label asp-for="PlanetName">
+					<strong>Planeta</strong>
+					<input type="text" asp-for="PlanetName" value="@Model.PlanetName" readonly class="form-control-plaintext" />
+				</label>
+				<input type="submit" value="Borrar" class="btn btn-danger"/>
+			</form>
+			
+		</table>
+	</div>
+</body>

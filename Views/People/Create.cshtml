@@ -1,16 +1,74 @@
-﻿@model StarWars.Models.People
+﻿@model People
 
 @{
-    ViewData["Title"] = "Crear Personaje";
-    
+	ViewData["Title"] = "Crear Personaje";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+	
 }
 
 <h1>Crea tú personaje</h1>
+<form asp-action="Create" method="post">
+	<label asp-for="Id">
+		<input type="hidden" asp-for="Id" />
+	</label>
+	<br />
+	<label asp-for="Name" class="form-label">
+		<strong>Nombre</strong>
+		<input asp-for="Name" class="form-control" />
+	</label>
+	<br />
+	<label asp-for="LaserSword" class="form-label">
+		Color de sable
+		<select asp-for="LaserSword" asp-items="@Html.GetEnumSelectList<Laser>();" name="LaserSword" >
+			<option value="" >Color</option>
+		</select>
+	</label>
+	<br />
+	<label asp-for="Race" class="form-label">
+		Elige una Raza:
+		<select asp-for="Race" asp-items="@Html.GetEnumSelectList<Race>();" name="Race" id="Race">
+			<option value="">Seleciona el tipo</option>
+		</select>
+	</label>
+	<br />
 
+	<label asp-for="Order" class="form-label">
+		Orden
+		<select asp-for="Order" asp-items="@Html.GetEnumSelectList<Order>()" name="Order" id="Order">
+			<option value="" selected="">Orden</option>
+		</select>
+	</label>
+	<br />
+	<label asp-for="PlanetName" class="form-label">
+		Planeta
+		<select asp-for="PlanetName" name="PlanetName" id="PlanetName">
+			<option value="">Selecciona un planeta</option>
+			@foreach(var name in ViewBag.PlanetName){
+				<option value="@name">@name</option>
+			}
+		</select>
+	</label>
+	<br />
+	<label asp-for="StarshipName" class="form-label">
+		 Nave
+		<select asp-for="StarshipName" name="StarshipName">
+			<option value="">Selecciona una nave</option>
+			@foreach(var name in ViewBag.StarshipName)
+			{
+				<option value="@name">@name</option>
+			}
+		</select>
+	</label> 
+	<br />
+	<input type="submit" value="Crear" />
+
+</form>
 <div>
-    <a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }
