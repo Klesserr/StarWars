@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarWars.Data;
 
@@ -10,9 +11,11 @@ using StarWars.Data;
 namespace StarWars.Migrations
 {
     [DbContext(typeof(StarWarsContext))]
-    partial class StarWarsContextModelSnapshot : ModelSnapshot
+    [Migration("20240809175428_ChangePlanetAndStarshipNameInPeople")]
+    partial class ChangePlanetAndStarshipNameInPeople
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +33,7 @@ namespace StarWars.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("LaserSword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(24)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
