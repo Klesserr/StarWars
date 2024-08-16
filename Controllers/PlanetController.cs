@@ -35,14 +35,8 @@ namespace StarWars.Controllers
 		  enlace de datos desde formularios.*/
 		{
 			if (ModelState.IsValid)
-			{
-				var p = new Planet //Creamos un nuevo planeta con los datos que nos proporciona el usuario mediante el formulario.
-				{
-					Name = planet.Name,
-					Climate = planet.Climate,
-					Gravity = planet.Gravity
-				};
-				_context.Planet.Add(p); //Añadimos el planeta a nuestra bd
+			{ 
+				_context.Planet.Add(planet); //Añadimos el planeta a nuestra bd
 				await _context.SaveChangesAsync(); //Guardamos los cambios.
 				return RedirectToAction(nameof(Index));
 			}
@@ -59,9 +53,9 @@ namespace StarWars.Controllers
 			{
 				_context.Planet.Remove(planet);
 				await _context.SaveChangesAsync();
-				return View();
+				return RedirectToAction(nameof(Index));
 			}
-			return View();
+			return View("Index");
 		}
 
 		[HttpPost]
@@ -80,7 +74,7 @@ namespace StarWars.Controllers
 			{
 				_context.Planet.Update(planet);
 				await _context.SaveChangesAsync();
-				return View();
+				return RedirectToAction(nameof(Index));
 			}
             return View();
         }
@@ -104,14 +98,15 @@ namespace StarWars.Controllers
 			return View(await _context.Planet.Where(p => p.Climate == nameClimate).ToListAsync());
 		}
 
-		public async Task<IActionResult> Index(List<Planet> list)
+		public async Task<IActionResult> Index(List<Planet> listPlanets)
 		{
-            if(list.Count > 0)
+			if (listPlanets.Count > 0)
 			{
-				return View(list);
+				return View(listPlanets);
 			}
-			return View(await _context.Planet.ToListAsync());
+			return View(await _context.Planet.OrderBy(p=>p.Name).ToListAsync());
 		}
+
 		/*public async Task<Planet> Get()
 		{
 			return await _context.Planet.FirstOrDefaultAsync(p => p.Name == "Tatooine");

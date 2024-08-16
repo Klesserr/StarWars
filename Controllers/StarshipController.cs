@@ -52,8 +52,8 @@ namespace StarWars.Controllers
             {
                 _context.Starship.Remove(starship);
                 await _context.SaveChangesAsync();
-                return View();
-            }
+				return RedirectToAction("Index");
+			}
             return View();
 		}
         [HttpPost]
@@ -70,7 +70,7 @@ namespace StarWars.Controllers
 			{
 				_context.Starship.Update(starship);
 				await _context.SaveChangesAsync();
-                return View();
+				return RedirectToAction("Index");
 			}
 			return View();
 		}
