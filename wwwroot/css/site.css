@@ -195,3 +195,12 @@ td {
 .cyan{
     color:var(--cyan);
 }
+.btn1 {
+    background-image: linear-gradient(to left, #258cfb,#2972b475,#258cfb );
+    color:cornsilk;
+}
+.btn2{
+    background-image: linear-gradient(to left, red,#ffccccaf,red);
+    color:black;
+}
+    
