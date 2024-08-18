@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Elfie.Extensions;
 using Microsoft.EntityFrameworkCore;
 using StarWars.Data;
 using StarWars.Models;
+using StarWars.ViewModel;
 
 namespace StarWars.Controllers
 {
@@ -37,7 +39,7 @@ namespace StarWars.Controllers
 			{
 				_context.People.Add(people);
 				await _context.SaveChangesAsync();
-				return View("Index");
+				return RedirectToAction("Index");
 			}
 			return View(people);
 		}
@@ -60,7 +62,6 @@ namespace StarWars.Controllers
 
 			if (ModelState.IsValid)
 			{
-
 				_context.People.Update(people);
 				await _context.SaveChangesAsync();
 				return RedirectToAction("Index");
@@ -84,14 +85,50 @@ namespace StarWars.Controllers
 			return View(await _context.People.ToListAsync());
 
 		}
-		public IActionResult Details(People people,Planet planet)
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Details(string namePlanet, string nameStarship,int id)
 		{
-            var prueba = from p in _context.Planet 
-						 where people.PlanetName == planet.Name  
-						 select new {p.Name,p.Gravity,p.Climate}; 
-            ViewBag.InfoPlanet = prueba;
-			return View(prueba);
+			if(ModelState.IsValid)
+			{
+				List<Planet> getPlanetInfo = GetAllInformationPlanet(namePlanet);
+				List<Starship> getStarshipInfo = GetAllInformationStarship(nameStarship);
+				People p = GetAllInformation(id);
+
+				ThreeInOneViewModel three = new ThreeInOneViewModel();
+				three.PlanetList = getPlanetInfo;
+				three.StarshipList = getStarshipInfo;
+
+				three.NamePeople = p.Name;
+				three.ColorLaser = p.LaserSword;
+				three.Race = p.Race;
+				three.Order = p.Order;
+				return View(three);
+			}
+			return View();
+           
 		}
-		
+
+		public List<Starship> GetAllInformationStarship(string nameStarship)
+		{
+			var queryStarship = from star in _context.Starship
+								where star.Name == nameStarship
+								select star;
+			return queryStarship.ToList();
+		}
+
+		public List<Planet> GetAllInformationPlanet(string namePlanet)
+		{
+			var queryPlanet = from pl in _context.Planet
+							  where pl.Name == namePlanet
+							  select pl;
+
+
+			return queryPlanet.ToList();
+		}
+		public People GetAllInformation(int id)
+		{
+			return _context.People.FirstOrDefault(p=>p.Id == id);
+		}
 	}
 }

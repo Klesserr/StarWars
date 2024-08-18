@@ -1,6 +1,8 @@
 :root {
     --main: #ffb13a;
     --font: 'Roboto','Oxygen',sans-serif;
+    --naranja: #fd7e14;
+    --cyan: #0dcaf0;
 }
 *{
     margin:0;
@@ -186,4 +188,10 @@ td {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+.naranja{
+   color : var(--naranja);
+}
+.cyan{
+    color:var(--cyan);
 }

@@ -1,21 +1,32 @@
-﻿@model IEnumerable<StarWars.Models.People>
-
+﻿@model StarWars.ViewModel.ThreeInOneViewModel
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_NavLayout.cshtml";
+	ViewData["Title"] = "Detalles";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 
-<h1>Details</h1>
-<h4>Detalles del planeta que pertenece al personaje</h4>
-<div class="container">
-    @foreach (var prueba in ViewBag.InfoPlanet)
-    {
-        <p>@prueba</p>
-        
-    }
-</div>
+<body>
+	<h2>Detalle del personaje seleccionado</h2>
+	<h6 class="rojo">Caracteristicas</h6>
+	<label class="form-label"><strong>Nombre </strong>@Model.NamePeople</label> <br> 
+	<label class="form-label"><strong>Color del sable </strong>@Model.ColorLaser</label> <br>
+	<label class="form-label"><strong>Raza </strong>@Model.Race</label> <br>
+	<label class="form-label"><strong>Orden </strong>@Model.Order</label> <br>
 
-<div>
-     |
-    <a asp-action="Index">Back to List</a>
-</div>
+	<h5 class="naranja">Planeta al que pertenece</h5>
+	@foreach(var planet in Model.PlanetList){
+		<p><strong>Nombre </strong>@planet.Name</p>
+		<p><strong>Clima </strong>@planet.Climate</p>
+		<p><strong>Gravedad </strong>@planet.Gravity</p>
+	}
+
+	<h5 class="cyan">Nave</h5>
+	@foreach(var starship in Model.StarshipList){
+		<label class="form-label"> <strong>Nombre </strong>@starship.Name</label><br>
+		<label class="form-label"> <strong>Modelo </strong>@starship.Model</label><br>
+		<label class="form-label"> <strong>Tipo de Arma</strong>@starship.Armament</label><br>
+		<label class="form-label"> <strong>Longitud </strong>@starship.Longitude</label><br>
+		<label class="form-label"> <strong>Pasajeros a bordo </strong>@starship.MaxPassengers</label><br>
+	}
+</body>
+
+

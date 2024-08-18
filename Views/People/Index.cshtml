@@ -6,7 +6,7 @@
 }
 
 <h1>Listado de Personajes</h1>
-<a href="@Url.Action("Create","People")"><button>CREAR PERSONAJE</button></a>
+<a asp-action="Create" class="btn btn-success">CREAR PERSONAJE </a>
 <body>
 	<table class="table">
 		<thead>
@@ -22,7 +22,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				@foreach (var i in @Model)
+				@foreach (var i in Model)
 				{
 				<tr>
 					<td>@Html.DisplayFor(model => i.Name)</td>
@@ -162,8 +162,8 @@
 							</label>
 						</form>
 						<td>
-						<form asp-action="Details" asp-route-id="@i.Id">
-							<a asp-action="Details">Ver detalles</a>
+						<form asp-action="Details" asp-route-namePlanet="@i.PlanetName" asp-route-nameStarship="@i.StarshipName" asp-route-id="@i.Id" method="post">
+							<input type="submit" value="Ver detalles" class="btn btn-info"/>
 						</form>
 						</td>
 						
