@@ -6,7 +6,7 @@
 <h1>Editar Planeta</h1>
 <body>
 	<div class="container">
-		<form asp-action="Edit" method="post">
+		<form asp-action="UpdateOnePlanet" method="post">
 			<label asp-for="Name" class="form-label">
 				<strong>Nombre del planeta</strong>
 				<input asp-for="Name" name="Name" value="@Model.Name" readonly class="form-control-plaintext" />

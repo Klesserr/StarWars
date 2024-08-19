@@ -126,6 +126,8 @@
     padding: 2px 5px;
     background-color: #46a049;
     border: 2px solid #04AA6D;
+    text-decoration: none;
+    color:white;
 }
 
     .boton-planet:hover {
@@ -203,4 +205,4 @@ td {
     background-image: linear-gradient(to left, red,#ffccccaf,red);
     color:black;
 }
-    
+ 

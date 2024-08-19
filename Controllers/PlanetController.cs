@@ -20,17 +20,19 @@ namespace StarWars.Controllers
 		{
 			_context = context;
 		}
-		//GET: Planet/Create
+		//GET: Planet/CrearPlaneta
 		[HttpGet]
-		public IActionResult Create()
+		[Route("CrearPlaneta")]
+		public IActionResult CreateANewPlanet()
 		{
 			return View();
 		}
 
-		//POST: Planet/Create
+		//POST: Planet/CrearPlaneta
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("Name,Climate,Gravity")] Planet planet)
+		[Route("CrearPlaneta")]
+		public async Task<IActionResult> CreateANewPlanet([Bind("Name,Climate,Gravity")] Planet planet)
 		/*Bind:Especifica que propiedades de un modelo(en este claso planeta) se deben incluir durante el
 		  enlace de datos desde formularios.*/
 		{
@@ -47,7 +49,7 @@ namespace StarWars.Controllers
 		//POST: Planet/Delete
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Delete(Planet planet)
+		public async Task<IActionResult> DeleteOnePlanet(Planet planet)
 		{
 			if (ModelState.IsValid)
 			{
@@ -60,15 +62,17 @@ namespace StarWars.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		//POST: Planet/Delete/namePlanet?=nombreDelPlaneta
+		[Route("Planet/Borrar",Name ="namePlanet")]
+		//POST: /Borrar?namePlanet="nombreDelPlaneta"
 		public async Task<IActionResult> ViewDelete(string namePlanet)
 		{
 			return View(await _context.Planet.FirstOrDefaultAsync(p => p.Name == namePlanet));
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		//POST: Planet/Edit
-		public async Task<IActionResult> Edit(Planet planet)
+		
+		//POST: Planet/Actualizar
+		public async Task<IActionResult> UpdateOnePlanet(Planet planet)
 		{
 			if (ModelState.IsValid)
 			{
@@ -80,19 +84,20 @@ namespace StarWars.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditView(string namePlanet)
+		[Route("Planet/Actualizar")]
+		public async Task<IActionResult> EditView(string namePlanet)
 		{
             return View(await _context.Planet.FirstOrDefaultAsync(p => p.Name == namePlanet));
         }
-		
-		public async Task<IActionResult> OrdenName()
+		[Route("Planet/OrdenDescendente")]
+		public async Task<IActionResult> OrderNameDescending()
 		{
 			var query = await _context.Planet.OrderByDescending(p => p.Name).ToListAsync();
 
             return View ("Index",query);
 			
 		}
-		[Route("Clima",Name = "nameClimate")]
+		[Route("Planet/Clima")]
 		public async Task<IActionResult> ClimateView(string nameClimate) 
 		{
 			return View(await _context.Planet.Where(p => p.Climate == nameClimate).ToListAsync());

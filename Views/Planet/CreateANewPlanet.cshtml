@@ -8,24 +8,27 @@
 	<h5>Datos del planeta</h5>
 	<div class="container row g-3 align-items-center" >
 
-		<form asp-action="Create" method="post">
+		<form asp-action="CreateANewPlanet" method="post">
 
 			<div class="container">
 			<label asp-for="Name" class="form-label">
 				Nombre
 				<input asp-for="Name" name="Name" value="" class="form-control" />
+				<span>@Html.ValidationMessageFor(model=>model.Name)</span>
 			</label>
 			</div>
 			<div class="container">
 			<label asp-for="Climate" class="form-label">
 				Clima
 				<input type="text" name="Climate" value="" class="form-control" />
+					<span>@Html.ValidationMessageFor(model => model.Climate)</span>
 			</label>
 			</div>
 			<div class="container">
 			<label asp-for="Gravity" class="form-label">
 				Gravedad
 				<input type="number" name="Gravity" value="" class="form-control"/>
+					<span>@Html.ValidationMessageFor(model => model.Gravity)</span>
 			</label>
 			</div>
 			<br />
