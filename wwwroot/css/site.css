@@ -135,6 +135,21 @@
         color: #46a049;
     }
 
+
+.boton-starship {
+    border-radius: 12px;
+    padding: 2px 5px;
+    background-color: #494444;
+    border: 2px solid #494444;
+    text-decoration: none;
+    color: white;
+}
+
+    .boton-starship:hover {
+        background-color: white;
+        color: #ffd800;
+    }
+
 .boton-borrar-editar {
     border: none;
     color: black;
@@ -205,4 +220,17 @@ td {
     background-image: linear-gradient(to left, red,#ffccccaf,red);
     color:black;
 }
- 
+.btn3{
+    background-image:linear-gradient(to left, #b2686840,#f9c9c9b0,#c99292ad)
+}
+
+.falcon {
+    margin-left: 100px;
+    background-color: white;
+    border: none;
+}
+.rebellion {
+    
+    background-color: white;
+    border: none;
+}

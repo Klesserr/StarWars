@@ -6,14 +6,16 @@
 }
 <body>
 	<h1>Naves Creadas</h1>
+	<br />
 	<form>
-		<button asp-action="Create">Crear Nave</button>
-		<button asp-action="Falcon"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-filled/48/star-wars-millenium-falcon.png" alt="star-wars-millenium-falcon" /></button>
-		<button asp-action="Index"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/star-wars-rebellion-ship.png" alt="star-wars-rebellion-ship" /></button>
+		<button asp-action="CreateOneStarship" class="boton-starship">Crear Nave</button>
+		<button asp-action="Falcon" class="falcon"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-filled/48/star-wars-millenium-falcon.png" alt="star-wars-millenium-falcon" /></button>
+		<button asp-action="Index" class="rebellion"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/star-wars-rebellion-ship.png" alt="star-wars-rebellion-ship" /></button>
 	</form>
+	<br />
 	<div class="container">
 		<table class="table">
-			<thead>
+			<thead class="table-secondary">
 				<tr>
 					<th>@Html.DisplayNameFor(model => model.Name)</th>
 					<th>@Html.DisplayNameFor(model => model.Model)</th>
@@ -35,12 +37,12 @@
 						<td>@Html.DisplayFor(model => i.Armament)</td>
 						<td>
 							<form asp-action="ViewDelete" method="post">
-								<input type="submit" asp-action="ViewDelete" asp-route-name="@i.Name" value="Borrar" />
+								<input type="submit" asp-action="ViewDelete" asp-route-name="@i.Name" value="Borrar Nave" class="boton-borrar-editar btn2" />
 							</form>
 						</td>
 						<td>
-							<form asp-action="ViewEdit" method="post">
-								<input type="submit" asp-action="ViewEdit" asp-route-name="@i.Name" value="Editar"/>
+							<form asp-action="Update" method="post">
+								<input type="submit" asp-action="Update" asp-route-name="@i.Name" value="Editar Nave" class="boton-borrar-editar btn1" />
 							</form>
 						</td>
 						

@@ -7,35 +7,40 @@
 
 <body class="centrado-planet">
 	<div class="container">
-		<form asp-action="Create" method="post">
+		<form asp-action="CreateOneStarship" method="post">
 
 			<label asp-for="Name" class="form-label">
 				<strong>Nombre</strong>
 				<input asp-for="Name" name="Name" value="" class="form-control" />
+				<span>@Html.ValidationMessageFor(m=>m.Name)</span>
 			</label>
 			<br />
 			<label asp-for="Model" class="form-label">
 				<strong>Modelo</strong>
 				<input asp-for="Model" name="Model" value="" class="form-control" />
+				<span>@Html.ValidationMessageFor(m => m.Model)</span>
 			</label>
 			<br />
 			<label asp-for="Longitude" class="form-label">
 				<strong>Longitud</strong>
 				<input asp-for="Longitude" name="Longitude" type="number" value="" class="form-control" />
+				<span>@Html.ValidationMessageFor(m => m.Longitude)</span>
 			</label>
 			<br />
 			<label asp-for="MaxPassengers" class="form-label">
 				<strong>Pasajeros a bordo</strong>
 				<input asp-for="MaxPassengers" name="MaxPassengers" type="number" value="" class="form-control" />
+				<span>@Html.ValidationMessageFor(m => m.MaxPassengers)</span>
 			</label>
 			<br />
 			<label asp-for="Armament" class="form-label">
 				<strong>Arma</strong>
 				<input asp-for="Armament" name="Armament" type="text" value="" class="form-control" />
+				<span>@Html.ValidationMessageFor(m => m.Armament)</span>
 			</label>
 			<br />
 
-			<input type="submit" value="Agregar Nave" />
+			<input type="submit" value="Agregar Nave" class="boton-borrar-editar btn3" />
 		</form>
 	</div>
 </body>

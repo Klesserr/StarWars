@@ -6,7 +6,7 @@
 <h4>Datos de la nave que vas a borrar</h4>
 <body>
 	<div class="table">
-		<form asp-action="Delete" method="post">
+		<form asp-action="DeleteOneStarship" method="post">
 
 			<label asp-for="Name" class="form-label">
 				<strong>Nombre</strong>
@@ -33,7 +33,7 @@
 				<input asp-for="Armament" name="Armament" value="@Model.Armament" readonly class="form-control-plaintext" />
 			</label>
 			<br />
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Borrar Nave </button>
+			<button type="button" class="boton-borrar-editar btn2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Borrar Nave </button>
 
 			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -47,7 +47,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<input type="submit" value="Aceptar" class="btn btn-danger" />
+							<input type="submit" value="Aceptar" class="boton-borrar-editar btn2" />
 						</div>
 					</div>
 				</div>

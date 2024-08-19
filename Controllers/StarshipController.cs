@@ -13,20 +13,23 @@ namespace StarWars.Controllers
     public class StarshipController : Controller
     {
         private readonly StarWarsContext _context;
-
+        
         public StarshipController(StarWarsContext context)
         {
             _context = context;
         }
         [HttpGet]
-        public IActionResult Create()
+		[Route("Starship/CrearNave")]
+		public IActionResult CreateOneStarship()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Starship/CrearNave")]
         
-        public async Task<IActionResult> Create([Bind("Name,Model,Longitude,MaxPassengers,Armament")] Starship starship)
+        
+        public async Task<IActionResult> CreateOneStarship([Bind("Name,Model,Longitude,MaxPassengers,Armament")] Starship starship)
         {
             if (ModelState.IsValid)
             {
@@ -46,7 +49,7 @@ namespace StarWars.Controllers
         }
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Delete(Starship starship)
+		public async Task<IActionResult> DeleteOneStarship(Starship starship)
         {
             if (ModelState.IsValid)
             {
@@ -58,13 +61,15 @@ namespace StarWars.Controllers
 		}
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Borrar/")]
 		public async Task<IActionResult> ViewDelete(string name)
         {
             return View(await _context.Starship.FirstOrDefaultAsync(p=>p.Name == name));
         }
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(Starship starship)
+        
+		public async Task<IActionResult> UpdateOneStarship(Starship starship)
 		{
 			if (ModelState.IsValid)
 			{
@@ -76,7 +81,8 @@ namespace StarWars.Controllers
 		}
 		[HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ViewEdit(string name)
+		[Route("Actualizar")]
+		public async Task<IActionResult> Update(string name)
         {
             return View(await _context.Starship.FirstOrDefaultAsync(p => p.Name == name));
         }
