@@ -22,7 +22,8 @@ namespace StarWars.Controllers
 			_context = context;
 		}
 		[HttpGet]
-		public IActionResult Create()
+		[Route("CrearPersonaje")]
+		public IActionResult CreateOnePeople()
 		{
 			var getAllPlanetName = _context.Planet.Select(p => p.Name).ToList();
 			ViewBag.PlanetName = getAllPlanetName;
@@ -33,7 +34,8 @@ namespace StarWars.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("Name,LaserSword,Order,Race,PlanetName,StarshipName")] People people)
+		[Route("CrearPersonaje")]
+		public async Task<IActionResult> CreateOnePeople([Bind("Name,LaserSword,Order,Race,PlanetName,StarshipName")] People people)
 		{
 			if (ModelState.IsValid)
 			{
@@ -45,7 +47,8 @@ namespace StarWars.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Delete(People people)
+		
+		public async Task<IActionResult> DeleteOnePeople(People people)
 		{
 			if (ModelState.IsValid)
 			{
@@ -57,7 +60,8 @@ namespace StarWars.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(People people)
+		[Route("Editar")]
+		public async Task<IActionResult> UpdateOnePeople(People people)
 		{
 
 			if (ModelState.IsValid)
@@ -70,24 +74,27 @@ namespace StarWars.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Route("BorrarPersonaje")]
+
 		public async Task<IActionResult> ViewDelete(int id)
 		{
 			return View(await _context.People.FirstOrDefaultAsync(p => p.Id == id));
 		}
 		public async Task<ActionResult> Index()
 		{
-
 			var getAllPlanetName = await _context.Planet.Select(p => p.Name).ToListAsync();
 			ViewBag.PlanetName = getAllPlanetName;
 
-			var getAllStarshipName = _context.Starship.Select(p => p.Name).ToList();
+			var getAllStarshipName = await _context.Starship.Select(p => p.Name).ToListAsync();
 			ViewBag.StarshipName = getAllStarshipName;
-			return View(await _context.People.ToListAsync());
 
+			return View(await _context.People.ToListAsync());
 		}
+
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Details(string namePlanet, string nameStarship,int id)
+		[Route("Información")]
+		public IActionResult AllInformationAboutCharacter(string namePlanet, string nameStarship,int id)
 		{
 			if(ModelState.IsValid)
 			{
@@ -107,6 +114,33 @@ namespace StarWars.Controllers
 			}
 			return View();
            
+		}
+		public IActionResult SeeAllJedi()
+		{
+			List<People> getJedi = GetAllJedi();
+			return View(getJedi);
+		}
+		public List<People> GetAllJedi()
+		{
+			var queryGetJedi = from p in _context.People
+						where p.Order == Order.Jedi
+						select p;
+
+			return queryGetJedi.ToList();
+		}
+
+		public IActionResult SeeAllSith()
+		{
+			List<People> getJedi = GetAllSith();
+			return View(getJedi);
+		}
+		public List<People> GetAllSith()
+		{
+			var queryGetSith = from p in _context.People
+							   where p.Order == Order.Sith
+							   select p;
+
+			return queryGetSith.ToList();
 		}
 
 		public List<Starship> GetAllInformationStarship(string nameStarship)

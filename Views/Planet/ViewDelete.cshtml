@@ -51,15 +51,18 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-						<input type="submit" value="Aceptar" class="btn btn-danger" />
+						<input type="submit" value="Aceptar" class="boton-borrar-editar btn2" />
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<div>
+			<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+			<br />
+			<a asp-action="Index">Volver al listado de planetas</a>
+		</div>
 	</form>
 </div>
-<a asp-action="Index">Volver al listado de planetas</a>
 @section Scripts {
 	@{
 		await Html.RenderPartialAsync("_ValidationScriptsPartial");

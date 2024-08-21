@@ -6,16 +6,18 @@
 	
 }
 
-<h1>Crea tú personaje</h1>
-<form asp-action="Create" method="post">
+<h2>Crear Personaje</h2>
+<form asp-action="CreateOnePeople" method="post">
 	<label asp-for="Id">
 		<input type="hidden" asp-for="Id" />
 	</label>
+	<br />
 	<br />
 	<label asp-for="Name" class="form-label">
 		<strong>Nombre</strong>
 		<input asp-for="Name" class="form-control" />
 	</label>
+	<br />
 	<br />
 	<label asp-for="LaserSword" class="form-label">
 		Color de sable
@@ -24,12 +26,14 @@
 		</select>
 	</label>
 	<br />
+	<br />
 	<label asp-for="Race" class="form-label">
 		Elige una Raza:
 		<select asp-for="Race" asp-items="@Html.GetEnumSelectList<Race>();" name="Race" id="Race">
 			<option value="">Seleciona el tipo</option>
 		</select>
 	</label>
+	<br />
 	<br />
 
 	<label asp-for="Order" class="form-label">
@@ -38,6 +42,7 @@
 			<option value="" selected="">Orden</option>
 		</select>
 	</label>
+	<br />
 	<br />
 	<label asp-for="PlanetName" class="form-label">
 		Planeta
@@ -48,6 +53,7 @@
 			}
 		</select>
 	</label>
+	<br />
 	<br />
 	<label asp-for="StarshipName" class="form-label">
 		 Nave
@@ -60,7 +66,8 @@
 		</select>
 	</label> 
 	<br />
-	<input type="submit" value="Crear" />
+	<br />
+	<input type="submit" value="Crear" class="boton-borrar-editar btn5" />
 
 </form>
 <div>

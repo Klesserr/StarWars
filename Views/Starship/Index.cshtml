@@ -5,7 +5,7 @@
 	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 <body>
-	<h1>Naves Creadas</h1>
+	<h3 class="text-center">Naves Creadas</h3>
 	<br />
 	<form>
 		<button asp-action="CreateOneStarship" class="boton-starship">Crear Nave</button>
@@ -51,6 +51,9 @@
 
 			</tbody>
 		</table>
+	</div>
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
 	</div>
 </body>
 

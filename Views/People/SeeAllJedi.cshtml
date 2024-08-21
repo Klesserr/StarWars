@@ -1,0 +1,39 @@
+﻿@model IEnumerable<StarWars.Models.People>
+
+@{
+	ViewData["Title"] = "Jedi";
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+
+<body>
+	<div class="container">
+		<table class="table">
+			<tr>
+				<th class="table-primary">@Html.DisplayNameFor(m => m.Name)</th>
+				<th class="table-primary">@Html.DisplayNameFor(m => m.LaserSword)</th>
+				<th class="table-primary">@Html.DisplayNameFor(m => m.Order)</th>
+				<th class="table-primary">@Html.DisplayNameFor(m => m.Race)</th>
+				<th class="table-primary">@Html.DisplayNameFor(m => m.PlanetName)</th>
+				<th class="table-primary">@Html.DisplayNameFor(m => m.StarshipName)</th>
+			</tr>
+
+			@foreach (var i in Model)
+			{
+				<tr>
+					<td>@Html.DisplayFor(m => i.Name)</td>
+					<td>@Html.DisplayFor(m => i.LaserSword)</td>
+					<td>@Html.DisplayFor(m => i.Order)</td>
+					<td>@Html.DisplayFor(m => i.Race)</td>
+					<td>@Html.DisplayFor(m => i.PlanetName)</td>
+					<td>@Html.DisplayFor(m => i.StarshipName)</td>
+				</tr>
+			}
+
+		</table>
+	</div>
+	<div>
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+		<br />
+	</div>
+</body>
+

@@ -5,7 +5,7 @@
 	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 <body class="centrado-planet">
-	<h5>Datos del planeta</h5>
+	<h5>Crear planeta</h5>
 	<div class="container row g-3 align-items-center" >
 
 		<form asp-action="CreateANewPlanet" method="post">
@@ -32,13 +32,14 @@
 			</label>
 			</div>
 			<br />
-			<input type="submit" value="Agregar Planeta" class="btn btn-primary"/>
+			<input type="submit" value="Agregar Planeta" class="boton-borrar-editar btn6" />
 			<br />
 		</form>
 	</div>
 	<br />
 	<div class="container">
 		<a asp-controller="Home" asp-action="Index">Inicio</a>
+		<br />
 		<a asp-action="Index">Volver al listado de planetas</a>
 	</div>
 </body>

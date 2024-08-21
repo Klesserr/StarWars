@@ -4,10 +4,10 @@
 	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 <body>
-	<h1>Vista de viewDelete</h1>
-	<div class="container text-center">
+	<h2>Detalles del personaje a eliminar</h2>
+	<div class="container">
 		<table class="table">
-			<form asp-action="Delete" method="post">
+			<form asp-action="DeleteOnePeople" method="post">
 				<label asp-for="Id">
 					<input type="hidden" asp-for="@Model.Id" />
 				</label>
@@ -39,9 +39,11 @@
 					<strong>Planeta</strong>
 					<input type="text" asp-for="PlanetName" value="@Model.PlanetName" readonly class="form-control-plaintext" />
 				</label>
-				<input type="submit" value="Borrar" class="btn btn-danger"/>
+				<br />
+				<input type="submit" value="Borrar" class="boton-borrar-editar btn2" />
 			</form>
-			
+			<br />
+			<a asp-action="Index">Volver</a>
 		</table>
 	</div>
 </body>

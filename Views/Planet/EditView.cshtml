@@ -3,7 +3,7 @@
 	ViewData["Title"] = "Editar";
 	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
-<h1>Editar Planeta</h1>
+<h4>Editar Planeta</h4>
 <body>
 	<div class="container">
 		<form asp-action="UpdateOnePlanet" method="post">
@@ -38,13 +38,17 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<input type="submit" value="Aceptar" class="btn btn-info" />
+							<input type="submit" value="Aceptar" class="boton-borrar-editar btn1" />
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-
-		<a asp-action="Index">Volver al listado de planetas</a>
+		<br />
+		<div>
+			<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+			<br />
+			<a asp-action="Index">Volver al listado de planetas</a>
+		</div>
 	</div>
 </body>

@@ -147,15 +147,30 @@
 
     .boton-starship:hover {
         background-color: white;
-        color: #ffd800;
+        color: #494444;
+    }
+
+.boton-people {
+    border-radius: 12px;
+    padding: 2px 5px;
+    background-color: #c60e48;
+    border: 2px solid #c60e48;
+    text-decoration: none;
+    color: white;
+}
+
+    .boton-people:hover {
+        background-color: white;
+        color: #c60e48;
     }
 
 .boton-borrar-editar {
     border: none;
     color: black;
     border-radius: 15px;
-    padding: 5px 12px;
+    padding: 5px 11px;
 }
+
 .navbar-nav {
     display: flex;
     align-items: center; /* Alinea verticalmente los elementos */
@@ -221,7 +236,18 @@ td {
     color:black;
 }
 .btn3{
-    background-image:linear-gradient(to left, #b2686840,#f9c9c9b0,#c99292ad)
+    background-image:linear-gradient(to left, #b2686840,#f9c9c9b0,#c99292ad);
+}
+.btn4{
+    background-image:linear-gradient(to left, #36ff00,#f5e4e4,#7def55);
+    color:#352b2bde;
+}
+.btn5 {
+    background-image: linear-gradient(to left, #f5f653d6,#fbf1a865,#f3ef34c7);
+    
+}
+.btn6 {
+    background-image: linear-gradient(to left, #9fb895,#a3d56a,#62bc77);
 }
 
 .falcon {

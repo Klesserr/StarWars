@@ -6,6 +6,7 @@
 }
 
 <body class="centrado-planet">
+	<h5>Crear Nave</h5>
 	<div class="container">
 		<form asp-action="CreateOneStarship" method="post">
 
@@ -39,15 +40,17 @@
 				<span>@Html.ValidationMessageFor(m => m.Armament)</span>
 			</label>
 			<br />
-
 			<input type="submit" value="Agregar Nave" class="boton-borrar-editar btn3" />
 		</form>
 	</div>
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Inicio</a>
+		<br />
+		<a asp-action="Index">Volver al listado de naves</a>
+	</div>
 </body>
 
-<div>
-	<a asp-action="Index">Ver todas las naves</a>
-</div>
+
 
 @section Scripts {
 	@{
