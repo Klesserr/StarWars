@@ -1,13 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using StarWars.Models;
 using StarWars.Data;
+using System.Net.Http.Headers;
+using StarWars.Client;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StarWarsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("StarWarsContext") ?? throw new InvalidOperationException("Connection string 'StarWarsContext' not found.")));
 
 // Add services to the container.
+builder.Services.AddScoped<Character>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddHttpClient();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,3 +38,4 @@ app.MapControllerRoute(
     );
 
 app.Run();
+
