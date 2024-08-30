@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Policy;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Elfie.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Protocol;
+using StarWars.Client;
 using StarWars.Data;
 using StarWars.Models;
 using StarWars.ViewModel;
+
 
 namespace StarWars.Controllers
 {
 	public class PeopleController : Controller
 	{
 		private readonly StarWarsContext _context;
-
 		public PeopleController(StarWarsContext context)
 		{
 			_context = context;
@@ -47,7 +54,7 @@ namespace StarWars.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		
+
 		public async Task<IActionResult> DeleteOnePeople(People people)
 		{
 			if (ModelState.IsValid)
@@ -94,26 +101,27 @@ namespace StarWars.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[Route("Información")]
-		public IActionResult AllInformationAboutCharacter(string namePlanet, string nameStarship,int id)
+		public IActionResult AllInformationAboutCharacter(string namePlanet, string nameStarship, int id)
 		{
-			if(ModelState.IsValid)
+			if (ModelState.IsValid)
 			{
 				List<Planet> getPlanetInfo = GetAllInformationPlanet(namePlanet);
 				List<Starship> getStarshipInfo = GetAllInformationStarship(nameStarship);
 				People p = GetAllInformation(id);
 
-				ThreeInOneViewModel three = new ThreeInOneViewModel();
-				three.PlanetList = getPlanetInfo;
-				three.StarshipList = getStarshipInfo;
-
-				three.NamePeople = p.Name;
-				three.ColorLaser = p.LaserSword;
-				three.Race = p.Race;
-				three.Order = p.Order;
+				ThreeInOneViewModel three = new ThreeInOneViewModel()
+				{
+					PlanetList = getPlanetInfo,
+					StarshipList = getStarshipInfo,
+					NamePeople = p.Name,
+					ColorLaser = p.LaserSword,
+					Race = p.Race,
+					Order = p.Order,
+				};
 				return View(three);
 			}
 			return View();
-           
+
 		}
 		public IActionResult SeeAllJedi()
 		{
@@ -123,8 +131,8 @@ namespace StarWars.Controllers
 		public List<People> GetAllJedi()
 		{
 			var queryGetJedi = from p in _context.People
-						where p.Order == Order.Jedi
-						select p;
+							   where p.Order == Order.Jedi
+							   select p;
 
 			return queryGetJedi.ToList();
 		}
@@ -162,7 +170,7 @@ namespace StarWars.Controllers
 		}
 		public People GetAllInformation(int id)
 		{
-			return _context.People.FirstOrDefault(p=>p.Id == id);
+			return _context.People.FirstOrDefault(p => p.Id == id);
 		}
 	}
 }
