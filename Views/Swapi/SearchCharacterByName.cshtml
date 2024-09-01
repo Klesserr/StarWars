@@ -2,17 +2,23 @@
 @{
 	Layout = null;
 }
-<h2>Personaje Buscado </h2>
+<h2>Personaje Buscado @Model.NameCharacter </h2>
 <h5>CARACTERISTICAS</h5>
-<p>NOMBRE: @Model.NamePeople</p>
-<p>COLOR PELO: @Model.HairColor</p>
+<p>NOMBRE: @Model.NameCharacter</p>
+<p>GÉNERO: @Model.GenderCharacter</p>
+<p>PESO: @Model.HeightCharacter</p>
+<p>MASA: @Model.MassCharacter</p>
+<p>COLOR PIEL: @Model.SkinColorCharacter</p>
+<p>COLOR PELO: @Model.HairColorCharacter</p>
 
 <h5>CARACTERISTICAS DEL PLANETA</h5>
 <p>NOMBRE PLANETA: @Model.NamePlanet</p>
 <p>TERRENO DEL PLANETA: @Model.TerrainPlanet</p>
+<p>GRAVEDAD DEL PLANETA: @Model.GravityPlanet</p>
+<p>CLIMA DEL PLANETA: @Model.ClimatePlanet</p>
 
 <h5>DETALLES DE LA PELICULA</h5>
-@foreach(var f in Model.listFilms)
+@foreach(var f in Model.ListFilms)
 {
 	<p>Episodio: @f.Episode_Id </p>
 	<p>Titulo: @f.Title</p>
@@ -21,10 +27,20 @@
 <h5>Detalles de la nave</h5>
 @foreach(var s in Model.ListStarship)
 {
+	<p>Nombre Nave : @s.Name</p>
+	<p>Modelo Nave : @s.Model</p>
+	<p>Clase : @s.Starship_Class</p>
+	<p>Fabricante : @s.Manufacturer</p>
 
-	<p>Nombre Vehiculo : @s.Name</p>
 }
-
+<h5>Detalles del vehiculo</h5>
+@foreach(var v in Model.ListVehicle)
+{
+	<p>Nombre del vehiculo: @v.Name</p>
+	<p>Modelo del vehiculo: @v.Model</p>
+	<p>Clase del vehiculo: @v.Vehicle_Class</p>
+	<p>Fabricante : @v.Manufacturer</p>
+}
 @* <p>Nombre: @Model.Name</p>
 <p>Gender: @Model.Gender</p>
 <p>Masa: @Model.Mass</p>

@@ -7,24 +7,19 @@ using System.Reflection.PortableExecutable;
 
 namespace StarWars.Client
 {
-	public class Swapi
+	
+
+	public class Swapi : ISwapiHasUrl
 	{
 		public List<Character> Results { get; set; }
 		public string Next { get; set; } //Contenido de people que nos dice en que página nos encontramos
+		public string Url { get; set; }
 	}
-	
 
-	public class PlanetAPI
+	public class Character : ISwapiHasUrl
 	{
 		public string Name { get; set; }
-		public string Gravity { get; set; }
-		public string Climate { get; set; }
-		public string Terrain { get; set; }
-		
-	}
-	public class Character
-	{
-		public string Name { get; set; }
+		public string Url {  set; get; }
 		public string Gender { get; set; }
 		public string Height { get; set; }
 		public string Mass { get; set; }
@@ -33,21 +28,31 @@ namespace StarWars.Client
 		public string HomeWorld { get; set; }
 		public List<string> Films { get; set; }
 		public List<string> Starships { get; set; }
-		public List<Film> ListFilms {  get; set; }
+		public List<string> Vehicles {  get; set; }
 
 	}
-	public class SwapiFilm
+
+
+	public class SwapiFilm : ISwapiHasUrl
 	{
+		public string Url { get; set; }
 		public List<Film> Results { get; set; }
 	}
-	public class Film
+	public class Film : ISwapiHasUrl
 	{
 		public int Episode_Id { get; set; }
 		public string Title { get; set; }
 		public string Opening_Crawl { get; set; }
 		public string Url { get; set; } 
 	}
-	public class StarshipAPI
+
+	public class SwapiStarship : ISwapiHasUrl
+	{
+		public string Url { get; set; }
+		public List<StarshipAPI> Results { get; set; }
+		public string Next { get; set; }
+	}
+	public class StarshipAPI : ISwapiHasUrl
 	{
 		public string Url { get; set; }
 		public string Name { get; set; }
@@ -57,9 +62,35 @@ namespace StarWars.Client
 
 	}
 
-	public class SwapiStarship
+	public class PlanetAPI : ISwapiHasUrl
 	{
-		public List<StarshipAPI> Results { get; set; }
+		public string Url { get; set; }
+		public string Name { get; set; }
+		public string Gravity { get; set; }
+		public string Climate { get; set; }
+		public string Terrain { get; set; }
+
+	}
+
+	public class SwapiVehicle : ISwapiHasUrl
+	{
+		public List<Vehicle> Results;
 		public string Next { get; set; }
+		public string Url { get; set; }
+	}
+	public class Vehicle : ISwapiHasUrl
+	{
+		public string Url { get; set; }
+		public string Name { get; set; }
+		public string Model { get; set; }
+		public string Vehicle_Class {  get; set; }
+		public string Manufacturer { get; set; }
+	}
+
+	public class SwapiGeneric<T> : ISwapiHasUrl
+	{
+		public string Next { set; get; }
+		public string Url { set; get; }
+		public List<T> Results { get; set; }
 	}
 }
