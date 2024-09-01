@@ -11,6 +11,19 @@
 <p>NOMBRE PLANETA: @Model.NamePlanet</p>
 <p>TERRENO DEL PLANETA: @Model.TerrainPlanet</p>
 
+<h5>DETALLES DE LA PELICULA</h5>
+@foreach(var f in Model.listFilms)
+{
+	<p>Episodio: @f.Episode_Id </p>
+	<p>Titulo: @f.Title</p>
+	<p>Opening: @f.Opening_Crawl</p>
+}
+<h5>Detalles de la nave</h5>
+@foreach(var s in Model.ListStarship)
+{
+
+	<p>Nombre Vehiculo : @s.Name</p>
+}
 
 @* <p>Nombre: @Model.Name</p>
 <p>Gender: @Model.Gender</p>
