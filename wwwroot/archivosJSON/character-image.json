@@ -1,0 +1,400 @@
+﻿{
+  "Resultado": [
+
+    {
+      "NameJson": "Luke Skywalker",
+      "ImageUrl": "/images/Luke.jpg",
+      "ResultadoStarships": [
+        {
+          "NameJsonStarship": "Imperial shuttle",
+          "ImageUrlStarship": "/images/Starships/Imperialshuttle.jpg"
+        },
+        {
+          "NameJsonStarship": "X-wing",
+          "ImageUrlStarship": "/images/Starships/X-wing.jpg"
+        }
+      ],
+      "ResultadoVehicles": [
+        {
+          "NameJsonVehicle": "Snowspeeder",
+          "ImageUrlVehicle": "/images/Vehicles/Snowspeeder.jpg"
+        },
+        {
+          "NameJsonVehicle": "Imperial Speeder Bike",
+          "ImageUrlVehicle": "/images/Vehicles/ImperialSpeederBike.jpg"
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "The Empire Strikes Back",
+          "ImageUrlFilm": "/images/Films/empires.jpg"
+        },
+        {
+          "NameJsonFilm": "Return of the Jedi",
+          "ImageUrlFilm": "/images/Films/jedi.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "C-3PO",
+      "ImageUrl": "/images/C-3PO.jpg",
+      "ResultadoStarships": [
+        {
+          "NameJsonStarship": "",
+          "ImageUrlStarship": ""
+        }
+      ],
+      "ResultadoVehicles": [
+        {
+          "NameJsonVehicle": "",
+          "ImageUrlVehicle": ""
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "The Empire Strikes Back",
+          "ImageUrlFilm": "/images/Films/empires.jpg"
+        },
+        {
+          "NameJsonFilm": "Return of the Jedi",
+          "ImageUrlFilm": "/images/Films/jedi.jpg"
+        },
+        {
+          "NameJsonFilm": "The Phantom Menace",
+          "ImageUrlFilm": "/images/Films/phantom.jpg"
+        },
+        {
+          "NameJsonFilm": "Attack of the Clones",
+          "ImageUrlFilm": "/images/Films/attack.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "R2-D2",
+      "ImageUrl": "/images/R2-D2.jpg",
+      "ResultadoStarships": [
+
+      ],
+      "ResultadoVehicles": [
+
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Naboo",
+          "ImageUrlPlanet": "/images/Planets/Naboo.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "The Empire Strikes Back",
+          "ImageUrlFilm": "/images/Films/empires.jpg"
+        },
+        {
+          "NameJsonFilm": "Return of the Jedi",
+          "ImageUrlFilm": "/images/Films/jedi.jpg"
+        },
+        {
+          "NameJsonFilm": "The Phantom Menace",
+          "ImageUrlFilm": "/images/Films/phantom.jpg"
+        },
+        {
+          "NameJsonFilm": "Attack of the Clones",
+          "ImageUrlFilm": "/images/Films/attack.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "Darth Vader",
+      "ImageUrl": "/images/DarthVader.jpg",
+      "ResultadoStarships": [
+        {
+          "NameJsonStarship": "TIE Advanced x1",
+          "ImageUrlStarship": "/images/Starships/TIEAdvancedx1.jpg"
+        }
+      ],
+      "ResultadoVehicles": [
+
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "The Empire Strikes Back",
+          "ImageUrlFilm": "/images/Films/empires.jpg"
+        },
+        {
+          "NameJsonFilm": "Return of the Jedi",
+          "ImageUrlFilm": "/images/Films/jedi.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+
+    },
+    {
+      "NameJson": "Leia Organa",
+      "ImageUrl": "/images/Leia.jpg",
+      "ResultadoStarships": [
+
+      ],
+      "ResultadoVehicles": [
+        {
+          "NameJsonVehicle": "Imperial Speeder Bike",
+          "ImageUrlVehicle": "/images/Vehicle/ImperialSpeederBike.jpg"
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Alderaan",
+          "ImageUrlPlanet": "/images/Planets/Alderaan.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "The Empire Strikes Back",
+          "ImageUrlFilm": "/images/Films/empires.jpg"
+        },
+        {
+          "NameJsonFilm": "Return of the Jedi",
+          "ImageUrlFilm": "/images/Films/jedi.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "Owen Lars",
+      "ImageUrl": "/images/Owen.jpg",
+      "ResultadoStarships": [
+
+      ],
+      "ResultadoVehicles": [
+
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A new Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "Attack of the Clones",
+          "ImageUrlFilm": "/images/Films/attack.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+
+    },
+    {
+      "NameJson": "Beru Whitesun lars",
+      "ImageUrl": "/images/Beru.jpg",
+      "ResultadoStarships": [
+        {
+
+        }
+      ],
+      "ResultadoVehicles": [
+        {
+
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A new Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "Attack of the Clones",
+          "ImageUrlFilm": "/images/Films/attack.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "R5-D4",
+      "ImageUrl": "/images/R5.jpg",
+      "ResultadoStarships": [
+        {
+
+        }
+      ],
+      "ResultadoVehicles": [
+        {
+
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A new Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "Biggs Darklighter",
+      "ImageUrl": "/images/Biggs.jpg",
+      "ResultadoStarships": [
+        {
+          "NameJsonStarship": "X-Wing",
+          "ImageUrlStarship": "/images/Starships/X-wing.jpg"
+        }
+      ],
+      "ResultadoVehicles": [
+        {
+
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Tatooine",
+          "ImageUrlPlanet": "/images/Planets/Tatooine.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        }
+      ]
+    },
+    {
+      "NameJson": "Obi-Wan Kenobi",
+      "ImageUrl": "/images/Obi.jpg",
+      "ResultadoStarships": [
+        {
+          "NameJsonStarship": "Jedi starfighter",
+          "ImageUrlStarship": "/images/Starships/Jedistarfighter.jpg"
+        },
+        {
+          "NameJsonStarship": "Trade Federation cruiser",
+          "ImageUrlStarship": "/images/Starships/TradeFederationcruiser.jpg"
+        },
+        {
+          "NameJsonStarship": "Naboo star skiff",
+          "ImageUrlStarship": "/images/Starships/Naboostarskiff.jpg"
+        },
+        {
+          "NameJsonStarship": "Jedi Interceptor",
+          "ImageUrlStarship": "/images/Starships/JediInterceptor.jpg"
+        },
+        {
+          "NameJsonStarship": "Belbullab-22 starfighter",
+          "ImageUrlStarship": "/images/Starships/Belbullab22starfighter.jpg"
+        }
+      ],
+      "ResultadoVehicles": [
+        {
+          "NameJsonVehicle": "Tribubble bongo",
+          "ImageUrlVehicle": "/images/Vehicles/Tribubblebongo.jpg"
+        }
+      ],
+      "ResultadoPlanets": [
+        {
+          "NameJsonPlanet": "Stewjon",
+          "ImageUrlPlanet": "/images/Planets/Stewjon.jpg"
+        }
+      ],
+      "ResultadoFilms": [
+        {
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+        },
+        {
+          "NameJsonFilm": "The Empire Strikes Back",
+          "ImageUrlFilm": "/images/Films/empires.jpg"
+        },
+        {
+          "NameJsonFilm": "Return of the Jedi",
+          "ImageUrlFilm": "/images/Films/jedi.jpg"
+        },
+        {
+          "NameJsonFilm": "The Phantom Menace",
+          "ImageUrlFilm": "/images/Films/phantom.jpg"
+        },
+        {
+          "NameJsonFilm": "Attack of the Clones",
+          "ImageUrlFilm": "/images/Films/attack.jpg"
+        },
+        {
+          "NameJsonFilm": "Revenge of the Sith",
+          "ImageUrlFilm": "/images/Films/revenge.jpg"
+        }
+      ]
+    }
+  ]
+}
