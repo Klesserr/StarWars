@@ -9,7 +9,7 @@ namespace StarWars.Client
 {
 	
 
-	public class Swapi : ISwapiHasUrl
+	public class SwapiCharacter : ISwapiHasUrl
 	{
 		public List<Character> Results { get; set; }
 		public string Next { get; set; } //Contenido de people que nos dice en que página nos encontramos
@@ -83,7 +83,7 @@ namespace StarWars.Client
 		public string Url { get; set; }
 		public string Name { get; set; }
 		public string Model { get; set; }
-		public string Vehicle_Class {  get; set; }
+		public string Vehicle_Class { get; set; }
 		public string Manufacturer { get; set; }
 	}
 
@@ -92,5 +92,51 @@ namespace StarWars.Client
 		public string Next { set; get; }
 		public string Url { set; get; }
 		public List<T> Results { get; set; }
+	}
+	public class AllSwapi<T>
+	{
+		public SwapiCharacter SwapiCharacter { get; set; }
+		public SwapiFilm SwapiFilm {  get; set; }
+		public SwapiStarship SwapiStarship { get; set; }
+		public SwapiVehicle SwapiVehicle { get; set; }
+
+	}
+
+	public class CharacterImageJson
+	{
+        public string NameJson { get; set; }
+        public string ImageUrl { get; set; }
+		public List<ResultadoStarships> ResultadoStarships { get; set; }
+		public List<ResultadoVehicles> ResultadoVehicles { get; set; }
+		public List<ResultadoPlanets> ResultadoPlanets { get; set; }
+
+	}
+	public class ResultadoStarships
+	{
+		public string NameJsonStarship { get; set; }
+		public string ImageUrlStarship { get; set; }
+	}
+	public class ResultadoVehicles
+	{
+		public string NameJsonVehicle { get; set; }
+		public string ImageUrlVehicle { get; set; }
+	}
+	public class ResultadoPlanets
+	{
+		public string NameJsonPlanet { get; set; }
+		public string ImageUrlPlanet { get; set; }
+	}
+	public class ResultadoFilms
+	{
+		public string NameJsonFilm { get; set; }
+		public string ImageUrlFilm { get; set; }
+	}
+	public class SwapiImageJson
+	{
+		public List<CharacterImageJson> Resultado { get; set; }
+		public List<ResultadoStarships> ResultadoStarships { get; set; }
+		public List<ResultadoVehicles> ResultadoVehicles { get; set; }
+		public List<ResultadoPlanets> ResultadoPlanets { get; set; }
+		public List<ResultadoFilms> ResultadoFilms { get; set; }
 	}
 }
