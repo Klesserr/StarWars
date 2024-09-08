@@ -1,0 +1,82 @@
+﻿html{
+    width:100%;
+    padding:10px;
+}
+body{
+    width:100%;
+    height:100%;
+}
+:root {
+    --main: #ffb13a;
+    --font: 'Roboto','Oxygen',sans-serif;
+    --naranja: #fd7e14;
+    --cyan: #0dcaf0;
+}
+
+.text-character {
+    font-family: 'Star Wars', sans-serif;
+    color: var(--main);
+    letter-spacing: 1.2px;
+    text-align: center;
+    justify-items: center;
+    justify-self: center;
+}
+
+.balanced {
+    position:relative;
+    left:500px;
+    justify-items: center;
+    justify-self: center;
+}
+
+.prueba{
+    display:inline-flex;
+}
+#container {
+    display: grid;
+    grid-template-columns: repeat(2 ,1fr);
+    margin-left: 400px;
+    margin-right: 400px;
+    text-align:center;
+}
+.elemento {
+    margin:10px;
+    width: 200px;
+    border: 5px solid red;
+
+}
+.mod-img {
+    position: relative;
+    width:100%;
+    height: 164px;
+
+}
+.boton-name {
+    /*Centrar el contenido para que todos sean iguales*/ 
+    text-align:center;
+    padding: 10px 20px;
+    margin:10px;
+    /*display:flex;*/
+    justify-content: center; 
+    align-items:center;
+    place-items:center;
+}
+
+.end {
+    background-color: #280939c6;
+    /*#52246bec*/ /*#5f2d79*/ /*#692d7a*/
+    /*#60277bf4*/ /*#340b38bc*/
+}
+.prueba{
+    width:150px;
+    height:50px;
+    background-image:url(../images/ANewHope.jpg);
+    background-size:cover;
+    border:none;
+    color:white;
+    text-align:center;
+}
+.content-right {
+    display: inline-block;
+    align-items: center;
+}
