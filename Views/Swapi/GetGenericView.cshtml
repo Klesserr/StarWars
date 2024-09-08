@@ -1,0 +1,100 @@
+﻿@model StarWars.ViewModel.SwapiViewModel
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - SWAPI</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+	<link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
+
+</head>
+<body>
+	<h2 class="text-character">CHARACTERS</h2>
+	<br />
+	<div class="container text-center" style="max-width: 540px;">
+		<div class="row g-0">
+			<div class="col-md-4">
+				<img src=@Model.ImageUrl class="img-fluid rounded-start" alt="imagenNoEncontrada">
+			</div>
+			<div class="col-md-8 text-center">
+				<div class="card-body ">
+					<h5 class="card-title">@Model.NameCharacter</h5>
+					<small class="text-secondary content-right">Gender:</small>
+					<span>@Model.GenderCharacter</span>
+					<small class="text-secondary content-right">Height:</small>
+					<span>@Model.HeightCharacter</span>
+					<br />
+					<small class="text-secondary content-right">Mass:</small>
+					<span>@Model.MassCharacter</span>
+					<small class="text-secondary content-right">Skin Color:</small>
+					<span>@Model.SkinColorCharacter</span>
+					<br />
+					<small class="text-secondary content-right">Hair Color:</small>
+					<span>@Model.HairColorCharacter</span>
+					<small class="text-secondary content-right">HomeWorld:</small>
+					<span>@Model.NamePlanet</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="container text-center">
+			<div class="card-body ">
+				<h5 class="card-title">HomeWorld</h5>
+				<img src="~/images/Planets/Tatooine.jpg" />
+				<small class="text-secondary content-right">Name:</small>
+				<span>@Model.NamePlanet</span>
+				<small class="text-secondary content-right">Gravity:</small>
+				<span>@Model.GravityPlanet</span>
+				<br />
+				<small class="text-secondary content-right">Terrain:</small>
+				<span>@Model.TerrainPlanet</span>
+				<small class="text-secondary content-right">Climate:</small>
+				<span>@Model.ClimatePlanet</span>
+			</div>
+		</div>
+
+
+		<div class="container ">
+			<h5 class="text-center">STARSHIPS</h5>
+			@foreach (var characterImageJson in Model.ListCharacterImageJson)
+			{
+				@foreach (var starshipResult in characterImageJson.ResultadoStarships)
+				{
+					@foreach (var starship in Model.ListStarship)
+					{
+						@if (starshipResult.NameJsonStarship == starship.Name)
+						{
+							<p>Model: @starship.Model</p>
+
+							<img src="@starshipResult.ImageUrlStarship" />
+						}
+					}
+				}
+			}
+
+
+
+			@* <div class="container">
+			<h5 class="card-title text-center">About Vehicles</h5>
+			@foreach(var i in Model.ListCharacterImageJson)
+			{
+			<p>Name: @i.NameJsonVehicle</p>
+			<p>Photo: <img src="@i.ImageUrlVehicle"/></p>
+			}
+			</div> *@
+
+		</div>
+	</div>
+
+</body>
+</html>

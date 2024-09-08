@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StarWars.Client.Character>
+﻿@model StarWars.ViewModel.SwapiViewModel
 @{
 	Layout = null;
 }
@@ -21,9 +21,7 @@
 <body class="end">
 	<h2 class="text-character">CHARACTERS</h2>
 	<br />
-	<form asp-action="GetUrlImagesJsonCharacters">
-		<a asp-action="GetUrlImagesJsonCharacters">Prueba</a>
-	</form>
+
 	<nav class="navbar balanced">
 		<form method="get" class="d-flex" role="search" asp-action="GetGenericView">
 			<input class="form-control me-2 text-character" type="search" placeholder="Search" aria-label="Search" name="name">
@@ -36,18 +34,21 @@
 			</button>
 		</form>
 	</nav>
-	@foreach (var i in Model)
-	{
-		<div id="container">
-			<form method="get" asp-action="GetGenericView" asp-route-name="name">
-				<div class="elemento">
-					<input type="submit" value="@i.Name" name="name" class="boton-name" />
-				</div>
-			</form>
+	<div id="container">
+
+		<div class="elemento">
+			@foreach (var i in Model.ListCharacterImageJson)
+			{
+				<form method="get" asp-action="GetGenericView" asp-route-name="name" asp-route-image="image">
+					<img src="@i.ImageUrl" class="mod-img" />
+					<input type="hidden" name="image" value="@i.ImageUrl" />
+					<input type="submit" name="name" value="@i.NameJson" class="boton-name" />
+				</form>
+			}
+
+
 		</div>
-
-
-	}
+	</div>
 </body>
 </html>
 @* <div id="container">
