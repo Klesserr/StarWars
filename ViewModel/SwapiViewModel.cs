@@ -35,5 +35,10 @@ namespace StarWars.ViewModel
 		public List<StarshipAPI> ListStarship { get; set; }
 		public List<Film> ListFilms { get; set; }
 		public List<Vehicle> ListVehicle {  get; set; }
+		//
+		public List<CharacterImageJson> ListCharacterImageJson { get; set; }
+		public string NameJson { get; set; }
+		public string ImageUrl { get; set; }
+		
 	}
 }
