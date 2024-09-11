@@ -33,7 +33,7 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
         },
         {
           "NameJsonFilm": "The Empire Strikes Back",
@@ -73,7 +73,7 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
         },
         {
           "NameJsonFilm": "The Empire Strikes Back",
@@ -115,7 +115,7 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
         },
         {
           "NameJsonFilm": "The Empire Strikes Back",
@@ -160,7 +160,8 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         },
         {
           "NameJsonFilm": "The Empire Strikes Back",
@@ -186,7 +187,7 @@
       "ResultadoVehicles": [
         {
           "NameJsonVehicle": "Imperial Speeder Bike",
-          "ImageUrlVehicle": "/images/Vehicle/ImperialSpeederBike.jpg"
+          "ImageUrlVehicle": "/images/Vehicles/ImperialSpeederBike.jpg"
         }
       ],
       "ResultadoPlanets": [
@@ -198,7 +199,8 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         },
         {
           "NameJsonFilm": "The Empire Strikes Back",
@@ -231,8 +233,9 @@
       ],
       "ResultadoFilms": [
         {
-          "NameJsonFilm": "A new Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         },
         {
           "NameJsonFilm": "Attack of the Clones",
@@ -266,8 +269,9 @@
       ],
       "ResultadoFilms": [
         {
-          "NameJsonFilm": "A new Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         },
         {
           "NameJsonFilm": "Attack of the Clones",
@@ -300,8 +304,9 @@
       ],
       "ResultadoFilms": [
         {
-          "NameJsonFilm": "A new Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "NameJsonFilm": "A New Hope",
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         }
       ]
     },
@@ -328,7 +333,8 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         }
       ]
     },
@@ -372,7 +378,8 @@
       "ResultadoFilms": [
         {
           "NameJsonFilm": "A New Hope",
-          "ImageUrlFilm": "/images/Films/ANewHope.jpg"
+          "ImageUrlFilm": "/images/Films/Anewhope.jpg"
+
         },
         {
           "NameJsonFilm": "The Empire Strikes Back",
