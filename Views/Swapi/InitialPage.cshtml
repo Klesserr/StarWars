@@ -19,12 +19,12 @@
 
 </head>
 <body class="end">
-	<h2 class="text-character">CHARACTERS</h2>
+	<h2 class="balanced container text-character">CHARACTERS</h2>
 	<br />
 
-	<nav class="navbar balanced">
+	<nav class="navbar balanced container ">
 		<form method="get" class="d-flex" role="search" asp-action="GetGenericView">
-			<input class="form-control me-2 text-character" type="search" placeholder="Search" aria-label="Search" name="name">
+			<input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" name="name">
 			<button class="btn btn-outline-success" type="submit">
 				<i class="bi bi-search">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -34,44 +34,20 @@
 			</button>
 		</form>
 	</nav>
-	<div id="container">
 
-		<div class="elemento">
-			@foreach (var i in Model.ListCharacterImageJson)
-			{
-				<form method="get" asp-action="GetGenericView" asp-route-name="name" asp-route-image="image">
-					<img src="@i.ImageUrl" class="mod-img" />
-					<input type="hidden" name="image" value="@i.ImageUrl" />
-					<input type="submit" name="name" value="@i.NameJson" class="boton-name" />
-				</form>
-			}
-
-
+	<div class="containter text-center ">
+		<div class="row">
+			<div class="container col-sm-2 film-prueba">
+				@foreach (var i in Model.ListCharacterImageJson)
+				{
+					<form method="get" asp-action="GetGenericView" asp-route-name="name" asp-route-image="image">
+						<img src="@i.ImageUrl" class="mod-img" />
+						<input type="hidden" name="image" value="@i.ImageUrl" />
+						<input type="submit" name="name" value="@i.NameJson" class="boton-name" />
+					</form>
+				}
+			</div>
 		</div>
 	</div>
 </body>
 </html>
-@* <div id="container">
-			<form method="get" asp-action="GetGenericView" asp-route-name="name">
-				<div class="elemento">
-				<img src="~/images/Luke.jpg" class="mod-img" />
-					<input type="submit" value="Luke Skywalker" name="name" class="boton-name" />
-				</div>
-			</form>
-			<form method="get" asp-action="GetGenericView">
-				<div class="elemento">
-
-				<img src="~/images/C-3PO.jpg" class="mod-img" />
-					<input type="submit" value="C-3PO" name="name" class="boton-name" />
-
-				</div>
-			</form>
-		</div>
-		<div id="container">
-		<form method="get" asp-action="GetGenericView">
-			<div class="elemento">
-				<img src="~/images/R2-D2.jpg" class="mod-img" />
-				<input type="submit" value="R2-D2" name="name" class="boton-name" />
-			</div>
-		</form>
-		</div> *@

@@ -1,0 +1,73 @@
+﻿@model StarWars.ViewModel.SwapiViewModel
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - SWAPI</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+	<link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
+
+</head>
+<body class="fondo-pantalla">
+	<div class="container centrado">
+		<h2>@Model.TitleFilm</h2>
+		<h4>Episode: @Model.EpisodeFilm</h4>
+		<h4>Director: @Model.Director</h4>
+		<h5>@Model.OpeningFilm</h5>
+		<br />
+	</div>
+	<div class="centrado">
+		<span>Information about all Starships,Planets,Vehicles and Characters who appears in @Model.TitleFilm</span>
+	</div>
+	<div class="containter text-center centrado">
+		<div class="row">
+			<div class="col-md-3">
+				<h6>VEHICLES</h6>
+				<br />
+				@foreach (var vehicle in Model.ListVehicle)
+				{
+					<p class="color-credits">@vehicle.Name</p>
+				}
+			</div>
+
+			<div class="col-md-3">
+				<h6>STARSHIPS</h6>
+				<br />
+				@foreach (var starship in Model.ListStarship)
+				{
+					<p class="container color-credits">@starship.Name</p>
+				}
+			</div>
+
+			<div class="col-md-3 ">
+				<h6>CHARACTERS</h6>
+				<br />
+				@foreach (var character in Model.ListCharacter)
+				{
+					<p class="color-credits">@character.Name</p>
+				}
+			</div>
+
+			<div class="col-md-3">
+				<h6>PLANETS</h6>
+				<br />
+				@foreach (var planet in Model.ListPlanetAPI)
+				{
+					<p class="color-credits">@planet.Name</p>
+				}
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

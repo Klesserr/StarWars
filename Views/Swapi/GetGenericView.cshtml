@@ -46,55 +46,153 @@
 				</div>
 			</div>
 		</div>
+		<br />
 
-		<div class="container text-center">
-			<div class="card-body ">
-				<h5 class="card-title">HomeWorld</h5>
-				<img src="~/images/Planets/Tatooine.jpg" />
-				<small class="text-secondary content-right">Name:</small>
-				<span>@Model.NamePlanet</span>
-				<small class="text-secondary content-right">Gravity:</small>
-				<span>@Model.GravityPlanet</span>
-				<br />
-				<small class="text-secondary content-right">Terrain:</small>
-				<span>@Model.TerrainPlanet</span>
-				<small class="text-secondary content-right">Climate:</small>
-				<span>@Model.ClimatePlanet</span>
-			</div>
-		</div>
-
-
-		<div class="container ">
-			<h5 class="text-center">STARSHIPS</h5>
-			@foreach (var characterImageJson in Model.ListCharacterImageJson)
+		@foreach (var hw in Model.ListCharacterImageJson)
+		{
+			@foreach (var resultPlanet in hw.ResultadoPlanets)
 			{
-				@foreach (var starshipResult in characterImageJson.ResultadoStarships)
-				{
-					@foreach (var starship in Model.ListStarship)
-					{
-						@if (starshipResult.NameJsonStarship == starship.Name)
-						{
-							<p>Model: @starship.Model</p>
 
-							<img src="@starshipResult.ImageUrlStarship" />
+				@if (resultPlanet.NameJsonPlanet == Model.NamePlanet && hw.NameJson == Model.NameCharacter)
+				{
+					<div>
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src=@resultPlanet.ImageUrlPlanet class="img-fluid rounded-start" alt="imagenNoEncontrada">
+							</div>
+							<div class="col-md-8 text-center">
+								<div class="card-body ">
+									<h5 class="card-title">HomeWorld</h5>
+									<small class="text-secondary content-right">Name:</small>
+									<span>@Model.NamePlanet</span>
+									<small class="text-secondary content-right">Terrain:</small>
+									<span>@Model.TerrainPlanet</span>
+									<br />
+									<small class="text-secondary content-right">Gravity:</small>
+									<span>@Model.GravityPlanet</span>
+									<small class="text-secondary content-right">Climate:</small>
+									<span>@Model.ClimatePlanet</span>
+									<br />
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			}
+		}
+		<h5 class="card-title">Information about Films</h5>
+		<div class="film-prueba">
+			@foreach (var characterImages in Model.ListCharacterImageJson)
+			{
+				@foreach (var resultFilms in characterImages.ResultadoFilms)
+				{
+					@foreach (var film in Model.ListFilms)
+					{
+						@if (characterImages.NameJson == Model.NameCharacter && resultFilms.NameJsonFilm == film.Title)
+						{
+
+							<div class="col">
+								<div class="row g-0">
+									<div class="col-md-8 text-center mx-auto">
+										<div class="card-body mx-auto">
+											<h6 class="card-title">@resultFilms.NameJsonFilm</h6>
+											<small class="text-secondary content-right">Director:</small>
+											<span>@film.Director</span>
+
+										</div>
+									</div>
+									<form asp-action="GetTheFilm" asp-route-title="@film.Title" asp-route-name="@Model.NameCharacter">
+										<button class="col-12" type="submit">
+											<div class="col-md-6 mx-auto">
+												<img src="@resultFilms.ImageUrlFilm" class="img-fluid rounded-start film-prueba" alt="imagenNoEncontrada" />
+											</div>
+
+										</button>
+									</form>
+								</div>
+							</div>
+
 						}
+					}
+
+				}
+			}
+		</div>
+		<h6 class="card-title">Starships</h6>
+
+		@foreach (var characterImages in Model.ListCharacterImageJson)
+		{
+			@foreach (var resultStarship in characterImages.ResultadoStarships)
+			{
+				@foreach (var starship in Model.ListStarship)
+				{
+					@if (starship.Name == resultStarship.NameJsonStarship)
+					{
+						<div class="container text-center mx-auto">
+							<div class="row g-0">
+								<div class="col-md-6 mx-auto">
+									<img src=@resultStarship.ImageUrlStarship class="img-fluid rounded-start" alt="imagenNoEncontrada">
+								</div>
+								<div class="col-md-8 text-center mx-auto">
+									<div class="card-body ">
+										<small class="text-secondary content-right">Name:</small>
+										<span>@starship.Name</span>
+										<br />
+										<small class="text-secondary content-right">Model:</small>
+										<span>@starship.Model</span>
+										<br />
+										<small class="text-secondary content-right">Manufacturer:</small>
+										<span>@starship.Manufacturer</span>
+										<br />
+										<small class="text-secondary content-right">Class:</small>
+										<span>@starship.Starship_Class</span>
+										<br />
+
+									</div>
+								</div>
+							</div>
+						</div>
 					}
 				}
 			}
-
-
-
-			@* <div class="container">
-			<h5 class="card-title text-center">About Vehicles</h5>
-			@foreach(var i in Model.ListCharacterImageJson)
+		}
+		<h6 class="card-title">Vehicles</h6>
+		@foreach (var characterImages in Model.ListCharacterImageJson)
+		{
+			@foreach (var resultVehicle in characterImages.ResultadoVehicles)
 			{
-			<p>Name: @i.NameJsonVehicle</p>
-			<p>Photo: <img src="@i.ImageUrlVehicle"/></p>
+				@foreach (var vehicle in Model.ListVehicle)
+				{
+					@if (vehicle.Name == resultVehicle.NameJsonVehicle && characterImages.NameJson == Model.NameCharacter)
+					{
+						<div class="container text-center mx-auto">
+							<div class="row g-0">
+								<div class="col-md-6 mx-auto">
+									<img src=@resultVehicle.ImageUrlVehicle class="img-fluid rounded-start" alt="imagenNoEncontrada">
+								</div>
+								<div class="col-md-8 text-center mx-auto">
+									<div class="card-body ">
+										<small class="text-secondary content-right">Name:</small>
+										<span>@vehicle.Name</span>
+										<br />
+										<small class="text-secondary content-right">Model:</small>
+										<span>@vehicle.Model</span>
+										<br />
+										<small class="text-secondary content-right">Manufacturer:</small>
+										<span>@vehicle.Manufacturer</span>
+										<br />
+										<small class="text-secondary content-right">Class:</small>
+										<span>@vehicle.Vehicle_Class</span>
+										<br />
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+
+				}
 			}
-			</div> *@
-
-		</div>
+		}
 	</div>
-
 </body>
 </html>
