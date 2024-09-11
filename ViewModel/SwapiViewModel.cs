@@ -20,6 +20,7 @@ namespace StarWars.ViewModel
 		//
 		public string TitleFilm { get; set; }
 		public string OpeningFilm {  get; set; }
+		public string Director {  get; set; }
 		public int EpisodeFilm {  get; set; }
 		//
 		public string NameStarship {  get; set; }
@@ -32,9 +33,11 @@ namespace StarWars.ViewModel
 		public string ManufacturerVehicle {  get; set; }
 		public string VehicleClass {  get; set; }
 		//
+		public List<Character> ListCharacter {  get; set; }
 		public List<StarshipAPI> ListStarship { get; set; }
 		public List<Film> ListFilms { get; set; }
 		public List<Vehicle> ListVehicle {  get; set; }
+		public List<PlanetAPI> ListPlanetAPI {  get; set; }
 		//
 		public List<CharacterImageJson> ListCharacterImageJson { get; set; }
 		public string NameJson { get; set; }

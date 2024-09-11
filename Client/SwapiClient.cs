@@ -43,7 +43,12 @@ namespace StarWars.Client
 		public int Episode_Id { get; set; }
 		public string Title { get; set; }
 		public string Opening_Crawl { get; set; }
+		public string Director { get; set; }
 		public string Url { get; set; } 
+		public List<string> Characters { get; set; }
+		public List<string> Planets {  get; set; }
+		public List <string> Starships { get; set; }
+		public List<string> Vehicles {  get; set; }
 	}
 
 	public class SwapiStarship : ISwapiHasUrl
@@ -62,6 +67,12 @@ namespace StarWars.Client
 
 	}
 
+	public class SwapiPlanetAPI
+	{
+		public string Url { get; set; }
+		public string Next { get; set; }
+		public List<PlanetAPI> Results { get; set; }
+	}
 	public class PlanetAPI : ISwapiHasUrl
 	{
 		public string Url { get; set; }
@@ -109,7 +120,7 @@ namespace StarWars.Client
 		public List<ResultadoStarships> ResultadoStarships { get; set; }
 		public List<ResultadoVehicles> ResultadoVehicles { get; set; }
 		public List<ResultadoPlanets> ResultadoPlanets { get; set; }
-
+		public List<ResultadoFilms> ResultadoFilms { get; set; }
 	}
 	public class ResultadoStarships
 	{

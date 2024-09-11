@@ -32,19 +32,6 @@ namespace StarWars.Controllers
 			swapiVM.ListCharacterImageJson = GetUrlImagesJsonCharacters();
 			return View(swapiVM);
 		}
-		//public List<VehiclesImageJson> GetUrlImagesVehiclesJsonCharacters()
-		//{
-		//	List<VehiclesImageJson> vehiclesImagesJson = new List<VehiclesImageJson>();
-		//	string urlJson = "wwwroot/archivosJSON/character-image.json";
-		//	string fileJson = System.IO.File.ReadAllText(urlJson);
-		//	SwapiImageJson swapiImage = new SwapiImageJson();
-		//	swapiImage = JsonConvert.DeserializeObject<SwapiImageJson>(fileJson);
-		//	foreach(var i in swapiImage.ResultadoVehicles)
-		//	{
-		//		vehiclesImagesJson.Add(i);
-		//	}
-		//	return vehiclesImagesJson;
-		//}
 		public async Task<ActionResult> GetAllCharactersAPI()
 		//Se hace Task<List<Character>> Si queremos que devuelva un TaskList.Para que sea una lista cuando llamemos al método pondremos await delante.
 		{
@@ -164,6 +151,35 @@ namespace StarWars.Controllers
 			var query = await GetFilmsCharacterAPI(url_films);
 			return View(query);
 		}
+		public async Task<List<PlanetAPI>> GetAllPlanetsAPI(List<PlanetAPI> listPlanetAPI,string url)
+		{
+			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			do
+			{
+				var httpResponse = await _client.GetAsync(url);
+				if (httpResponse.IsSuccessStatusCode)
+				{
+					var contestResponse = await httpResponse.Content.ReadAsStringAsync();
+					SwapiPlanetAPI swapiPlanetAPI = new SwapiPlanetAPI();
+					swapiPlanetAPI = JsonConvert.DeserializeObject<SwapiPlanetAPI>(contestResponse);
+					foreach(var p in swapiPlanetAPI.Results)
+					{
+						listPlanetAPI.Add(p);
+					}
+					string urlNext = swapiPlanetAPI.Next;
+					if (urlNext != null)
+					{
+						url = urlNext;
+					}
+					else
+					{
+						url = null;
+					}
+				}
+			} while (url != null);
+			return listPlanetAPI;
+		}
+		
 		public async Task<List<StarshipAPI>> GetStarshipsCharacterAPI(List<string> url_starships)
 		{
 			List<StarshipAPI> listStarship = new List<StarshipAPI>();
@@ -399,9 +415,9 @@ namespace StarWars.Controllers
 		}
 		public List<T> AddEspecificInfo<T>(List<string> urlList, List<T> genericList, List<T> result) where T : ISwapiHasUrl
 		{
-			foreach (var s in urlList)
+			foreach (var url in urlList)
 			{
-				var query = genericList.FirstOrDefault(p => p.Url == s);
+				var query = genericList.FirstOrDefault(p => p.Url == url);
 				if (query != null)
 				{
 					result.Add(query);
@@ -419,39 +435,38 @@ namespace StarWars.Controllers
 			SwapiCharacter swapi = new SwapiCharacter();
 			swapi.Results = await GetListAllCharactersAPI();
 			var query = swapi.Results.Where(x => x.Name == name).ToList();
+
 			List<CharacterImageJson> characterImageJsons = new List<CharacterImageJson>();
-			SwapiViewModel swapiVM = new SwapiViewModel();
 			characterImageJsons = GetUrlImagesJsonCharacters();
+
+			SwapiViewModel swapiVM = new SwapiViewModel();
 			swapiVM.ListCharacterImageJson = characterImageJsons;
 
-			foreach (var v in query)
+			foreach (var c in query)
 			{
-				var getPlanet = await GetPlanetAPI(v.HomeWorld);
-				swapiVM.NameCharacter = v.Name;
-				swapiVM.GenderCharacter = v.Gender;
-				swapiVM.HeightCharacter = v.Height;
-				swapiVM.MassCharacter = v.Mass;
-				swapiVM.SkinColorCharacter = v.Skin_Color;
-				swapiVM.HairColorCharacter = v.Hair_Color;
+				var getPlanet = await GetPlanetAPI(c.HomeWorld);
+				swapiVM.NameCharacter = c.Name;
+				swapiVM.GenderCharacter = c.Gender;
+				swapiVM.HeightCharacter = c.Height;
+				swapiVM.MassCharacter = c.Mass;
+				swapiVM.SkinColorCharacter = c.Skin_Color;
+				swapiVM.HairColorCharacter = c.Hair_Color;
 				//
 				swapiVM.NamePlanet = getPlanet.Name;
 				swapiVM.TerrainPlanet = getPlanet.Terrain;
 				swapiVM.ClimatePlanet = getPlanet.Climate;
 				swapiVM.GravityPlanet = getPlanet.Gravity;
 				//
-				swapiVM.ListStarship = await GetInformation<StarshipAPI>(urlStarship, v.Starships);
-				swapiVM.ListFilms = await GetInformation<Film>(urlFilm, v.Films);
-				swapiVM.ListVehicle = await GetInformation<Vehicle>(urlVehicle, v.Vehicles);
+				swapiVM.ListStarship = await GetInformation<StarshipAPI>(urlStarship, c.Starships);
+				swapiVM.ListFilms = await GetInformation<Film>(urlFilm, c.Films);
+				swapiVM.ListVehicle = await GetInformation<Vehicle>(urlVehicle, c.Vehicles);
 				//
 				swapiVM.NameJson = name;
 				swapiVM.ImageUrl = image;
 				//
 			}
-			
 			return View(swapiVM);
 		}
-
-
 		public List<CharacterImageJson> GetUrlImagesJsonCharacters()
 		{
 			List<CharacterImageJson> charactersImageJson = new List<CharacterImageJson>();
@@ -466,6 +481,112 @@ namespace StarWars.Controllers
 				charactersImageJson.Add(i);
 			}
 			return charactersImageJson;
+		}
+		public async Task<ActionResult> GetTheFilm(string title, string name)
+		{
+			SwapiCharacter swapi = new SwapiCharacter();
+			swapi.Results = await GetListAllCharactersAPI();
+
+			SwapiViewModel swapiVM = new SwapiViewModel();
+			var query = swapi.Results.Where(x => x.Name == name).ToList();
+
+			SwapiStarship swapiStarship = new SwapiStarship();
+			List<StarshipAPI> starshipAPIs = new List<StarshipAPI>();
+			swapiStarship.Results = await GetListAllStarshipAPI(starshipAPIs, urlStarship);
+
+			SwapiVehicle swapiVehicle = new SwapiVehicle();
+			List<Vehicle> vehicles = new List<Vehicle>();
+			swapiVehicle.Results = await GetAllVehiclesAPI(vehicles, urlVehicle);
+
+			SwapiPlanetAPI swapiPlanetAPI = new SwapiPlanetAPI();
+			List<PlanetAPI> planetAPI = new List<PlanetAPI>();
+			swapiPlanetAPI.Results = await GetAllPlanetsAPI(planetAPI, urlPlanet);
+
+			foreach (var c in query)
+			{
+				swapiVM.ListFilms = await GetInformation<Film>(urlFilm, c.Films);
+				foreach (var film in swapiVM.ListFilms)
+				{
+					if (film.Title == title && c.Name == name)
+					{
+						swapiVM.TitleFilm = film.Title;
+						swapiVM.EpisodeFilm = film.Episode_Id;
+						swapiVM.OpeningFilm = film.Opening_Crawl;
+						swapiVM.Director = film.Director;
+						//Obtenemos el listado de naves que aparecen en la pelicula:(objeto SwapiStarship,lista<StarashipAPI>,objeto Film)
+						swapiVM.ListStarship = await GetAllStarshipsAppearFilm(swapiStarship, swapiVM.ListStarship,film);
+						//Obtenemos el listado de vehiculos que aparecen en la pelicula:(objeto SwapiVehicle,lista<Vehicle>,objeto Film)
+						swapiVM.ListVehicle = await GetAllVehiclesAppearFilm(swapiVehicle,swapiVM.ListVehicle,film);
+						//Obtenemos el listado de planetas que aparecen en la pelicula:(objeto SwapiPlanetAPI,lista<PlanetAPI>,objeto Film)
+						swapiVM.ListPlanetAPI = await GetAllPlanetsAppearFilm(swapiPlanetAPI,swapiVM.ListPlanetAPI,film);
+						//Obtenemos el listado de personajes que aparecen en la pelicula:(objeto SwapiCharacter,lista<Character>,objeto Film)
+						swapiVM.ListCharacter = await GetAllCharactersAppearFilm(swapi,swapiVM.ListCharacter,film);
+					}
+				}
+			}
+			return View(swapiVM);
+
+		}
+		
+		public async Task<List<StarshipAPI>> GetAllStarshipsAppearFilm(SwapiStarship swapiStarship,List<StarshipAPI>listStarshipAPI,Film film)
+		{
+			/*Creamos un objeto de tipo StarshipAPI y recorremos la lista que nos llega
+			 * (que es de tipo SwapiStarship(contiene un listado con todas las naves de la api))
+			 * Después recorremos filmStarships-> es un listado de string que contiene la url de las naves en el listado de peliculas.
+			 * En caso de que las url coincidan, llamamos al método que nos devuelve la información sobre esa nave y retornamos su listado..*/
+			foreach (var starshipAPI in swapiStarship.Results)
+			{
+				foreach (string url in film.Starships) //filmStarships->Listado de string que contiene la url de las starships en el listado de peliculas.
+				{
+					if (starshipAPI.Url == url)
+					{
+						listStarshipAPI = await GetInformation<StarshipAPI>(urlStarship, film.Starships);
+					}
+				}
+			}
+			return listStarshipAPI;
+		}
+		public async Task<List<Vehicle>> GetAllVehiclesAppearFilm(SwapiVehicle swapiVehicle,List<Vehicle>listVehicle,Film film)
+		{
+			foreach(var vehicle in swapiVehicle.Results)
+			{
+				foreach(string url in film.Vehicles)
+				{
+					if(vehicle.Url == url)
+					{
+						listVehicle = await GetInformation<Vehicle>(urlVehicle, film.Vehicles);
+					}
+				}
+			}
+			return listVehicle;
+		}
+		public async Task<List<PlanetAPI>> GetAllPlanetsAppearFilm(SwapiPlanetAPI swapiPlanetAPI,List<PlanetAPI>listPlanetAPI,Film film)
+		{
+			foreach(var planet in swapiPlanetAPI.Results)
+			{
+				foreach(string url in film.Planets)
+				{
+					if(planet.Url == url)
+					{
+						listPlanetAPI = await GetInformation<PlanetAPI>(urlPlanet, film.Planets);
+					}
+				}
+			}
+			return listPlanetAPI;
+		}
+		public async Task<List<Character>> GetAllCharactersAppearFilm(SwapiCharacter swapiCharacter,List<Character>listCharacters,Film film)
+		{
+			foreach(var character in swapiCharacter.Results)
+			{
+				foreach(var url in film.Characters)
+				{
+					if(character.Url == url)
+					{
+						listCharacters = await GetInformation<Character>(urlPeople,film.Characters);
+					}
+				}
+			}
+			return listCharacters;
 		}
 	}
 }
