@@ -1,0 +1,65 @@
+﻿@model StarWars.Models.Starship
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - @ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+</head>
+<body class="text-center">
+	<h3>Nave importada con éxito</h3>
+	<div class="container">
+		<div>
+			<strong>Nombre de la nave:</strong>
+			<label readonly class="form-control-plaintext">
+				@Model.Name
+			</label>
+		</div>
+		<br />
+		<div>
+			<strong>Modelo:</strong>
+			<label readonly class="form-control-plaintext">
+				@Model.Model
+			</label>
+		</div>
+		<br />
+		<div>
+			<strong>Clase:</strong>
+			<label readonly class="form-control-plaintext">
+				@Model.Class_Starship
+			</label>
+		</div>
+		<br />
+		<div>
+			<strong>Pasajeros a bordo:</strong>
+			<label readonly class="form-control-plaintext">
+				@Model.MaxPassengers
+			</label>
+		</div>
+		<br />
+		<div>
+			<strong>Longitud:</strong>
+			<label readonly class="form-control-plaintext">
+				@Model.Longitude
+			</label>
+		</div>
+		<br />
+	</div>
+
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Inicio</a>
+		<br />
+		<a asp-controller="Starship"asp-action="Index">Volver al listado de naves</a>
+	</div>
+</body>
+</html>

@@ -12,6 +12,13 @@
 	<label class="form-label"><strong>Raza </strong>@Model.Race</label> <br>
 	<label class="form-label"><strong>Orden </strong>@Model.Order</label> <br>
 
+	<label class="form-label"><strong>Género </strong>@Model.Gender</label> <br>
+	<label class="form-label"><strong>Color Pelo </strong>@Model.Hair_Color</label> <br>
+	<label class="form-label"><strong>Color Piel </strong>@Model.Skin_Color</label> <br>
+	<label class="form-label"><strong>Masa </strong>@Model.Mass</label> <br>
+	<label class="form-label"><strong>Peso </strong>@Model.Height</label> <br>
+	<label class="form-label"><strong>Hogar </strong>@Model.HomeWorld</label> <br>
+
 	<h5 class="naranja">Planeta al que pertenece</h5>
 	@foreach(var planet in Model.PlanetList){
 		<p><strong>Nombre </strong>@planet.Name</p>
@@ -20,12 +27,8 @@
 	}
 
 	<h5 class="cyan">Nave</h5>
-	@foreach(var starship in Model.StarshipList){
-		<label class="form-label"> <strong>Nombre </strong>@starship.Name</label><br>
-		<label class="form-label"> <strong>Modelo </strong>@starship.Model</label><br>
-		<label class="form-label"> <strong>Tipo de Arma</strong>@starship.Armament</label><br>
-		<label class="form-label"> <strong>Longitud </strong>@starship.Longitude</label><br>
-		<label class="form-label"> <strong>Pasajeros a bordo </strong>@starship.MaxPassengers</label><br>
+	@foreach(var starship in Model.Starships){
+		<label class="form-label"> <strong>Nombre </strong>@string.Join("\n", @starship)</label><br>
 	}
 </body>
 

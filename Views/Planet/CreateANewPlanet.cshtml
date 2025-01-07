@@ -9,7 +9,6 @@
 	<div class="container row g-3 align-items-center" >
 
 		<form asp-action="CreateANewPlanet" method="post">
-
 			<div class="container">
 			<label asp-for="Name" class="form-label">
 				Nombre
@@ -27,9 +26,17 @@
 			<div class="container">
 			<label asp-for="Gravity" class="form-label">
 				Gravedad
-				<input type="number" name="Gravity" value="" class="form-control"/>
+				<input type="text" name="Gravity" value="" class="form-control"/>
 					<span>@Html.ValidationMessageFor(model => model.Gravity)</span>
 			</label>
+			</div>
+			<br />
+			<div class="container">
+				<label asp-for="Terrain" class="form-label">
+					Terreno
+					<input type="text" name="Terrain" value="" class="form-control" />
+					<span>@Html.ValidationMessageFor(model => model.Terrain)</span>
+				</label>
 			</div>
 			<br />
 			<input type="submit" value="Agregar Planeta" class="boton-borrar-editar btn6" />

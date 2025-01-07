@@ -1,0 +1,57 @@
+﻿@model StarWars.Models.Planet
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - @ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+</head>
+<body class="text-center">
+	<h3>Planeta importado con éxito</h3>
+	<div class="container text-center">
+		<div class="text-center">
+			<label class="form-label">
+				<strong>Nombre del planeta: </strong><br />
+				@Model.Name
+			</label>
+		</div>
+		<br />
+		<div class="text-center">
+			<label class="form-label">
+				<strong>Clima: </strong><br />
+				@Model.Climate
+			</label>
+		</div>
+		<br />
+		<div class="text-center">
+			<label class="form-label">
+				<strong>Gravedad: </strong><br />
+				@Model.Gravity
+			</label>
+		</div>
+		<br />
+		<div class="text-center">
+			<label class="form-label">
+				<strong>Terreno: </strong><br />
+				@Model.Terrain
+			</label>
+		</div>
+	</div>
+
+	<div>
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+		<br />
+		<a asp-controller="Planet" asp-action="Index">Volver al listado de planetas</a>
+	</div>
+</body>
+</html>

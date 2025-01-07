@@ -12,19 +12,17 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">Nave Existente</h5>
-						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						@TempData["ExistingStarship"]
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+						<button type="button" class="boton-borrar-editar btn1" data-bs-dismiss="modal">Aceptar</button>
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	}
 	<h3 class="text-center">Naves Creadas</h3>
 	<br />
@@ -69,7 +67,7 @@
 								<input type="submit" asp-action="Update" asp-route-name="@i.Name" value="Editar Nave" class="boton-borrar-editar btn1" />
 							</form>
 						</td>
-						
+
 					</tr>
 				}
 
@@ -79,5 +77,14 @@
 	<div class="container">
 		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
 	</div>
+	<script type="text/javascript">
+		window.onload = function () {
+			var hasMessage = '@TempData["ExistingStarship"]' !== "";
+			if (hasMessage) {
+				var modal = new bootstrap.Modal(document.getElementById('starshipModal'));
+				modal.show();
+			}
+		}
+	</script>
 </body>
-
+</html>

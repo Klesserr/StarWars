@@ -35,6 +35,13 @@
 					<span asp-validation-for="Gravity" class="text-danger"></span>
 				</div>
 				<br />
+				<div class="form-group">
+					<label asp-for="Terrain" class="form-label">
+						<strong>Terreno</strong>
+					</label>
+					<input asp-for="Terrain" value="@Model.Terrain" readonly class="form-control-plaintext" />
+					<span asp-validation-for="Terrain" class="text-danger"></span>
+				</div>
 			</tr> 
 		</table>
 		<button type="button" class="boton-borrar-editar btn2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Borrar planeta </button>

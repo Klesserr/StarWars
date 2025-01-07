@@ -1,0 +1,61 @@
+﻿@model StarWars.Models.Vehicle
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+	ViewData["Title"] = "Update Page";
+}
+<body>
+	<h4 class="text-center">Actualiza el siguiente vehiculo</h4>
+	<form asp-action="UpdateVehicle" method="post">
+		<div class="container">
+			<label asp-for="Name">
+				<strong>Nombre</strong>
+				<input type="text" value="@Model.Name" asp-for="Name" readonly class="form-control-plaintext" />
+			</label>
+
+			<br />
+			<br />
+			<label asp-for="Model">
+				<strong>Modelo</strong>
+				<input type="text" value="@Model.Model" asp-for="Model"/>
+			</label>
+
+			<br />
+			<br />
+			<label asp-for="Manufacturer">
+				<strong>Fabricación</strong>
+				<input type="text" value="@Model.Manufacturer" asp-for="Manufacturer" />
+			</label>
+
+			<br />
+			<br />
+			<label asp-for="VehicleClass">
+				<strong>Clase</strong>
+				<input type="text" value="@Model.VehicleClass" asp-for="VehicleClass" />
+			</label>
+
+			<br />
+			<br />
+		</div>
+		
+		<button type="button" class="boton-borrar-editar btn1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Editar Vehiculo </button>
+
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">El vehiculo va a ser editado</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						Pulsa aceptar para editar el vehiculo
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+						<input type="submit" value="Aceptar" class="boton-borrar-editar btn1" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</body>

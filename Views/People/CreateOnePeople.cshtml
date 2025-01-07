@@ -8,11 +8,7 @@
 
 <h2>Crear Personaje</h2>
 <form asp-action="CreateOnePeople" method="post">
-	<label asp-for="Id">
-		<input type="hidden" asp-for="Id" />
-	</label>
-	<br />
-	<br />
+	
 	<label asp-for="Name" class="form-label">
 		<strong>Nombre</strong>
 		<input asp-for="Name" class="form-control" />
@@ -55,9 +51,9 @@
 	</label>
 	<br />
 	<br />
-	<label asp-for="StarshipName" class="form-label">
+	<label asp-for="StarshipsList" class="form-label">
 		 Nave
-		<select asp-for="StarshipName" name="StarshipName">
+		<select asp-for="StarshipsList" name="StarshpsList">
 			<option value="">Selecciona una nave</option>
 			@foreach(var name in ViewBag.StarshipName)
 			{
@@ -66,6 +62,31 @@
 		</select>
 	</label> 
 	<br />
+	<label asp-for="Gender" class="form-label">
+		Género
+		<input asp-for="Gender" type="text"  class="form-control"/>
+	</label>
+	<br />
+	<label asp-for="Hair_Color" class="form-label">
+		Color Pelo
+		<input asp-for="Hair_Color" type="text"  class="form-control"/>
+	</label>
+	<br />
+	<label asp-for="Skin_Color" class="form-label">
+		Color Piel
+		<input asp-for="Skin_Color" type="text"  class="form-control"/>
+	</label>
+	<br />
+	<label asp-for="Mass" class="form-label">
+		Masa
+		<input asp-for="Mass" type="text"  class="form-control" />
+	</label>
+	<br />
+	<label asp-for="Height" class="form-label">
+		Peso
+		<input asp-for="Height" type="text"  class="form-control" />
+	</label>
+	
 	<br />
 	<input type="submit" value="Crear" class="boton-borrar-editar btn5" />
 

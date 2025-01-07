@@ -1,6 +1,10 @@
 ﻿@model StarWars.ViewModel.SwapiViewModel
 @{
 	Layout = null;
+	var defaultImage = "/images/notfound.jpg";
+	var characterImage = Model.ListCharacterImageJson.FirstOrDefault(x => x.NameJson == Model.NameJson);
+	var planetImage = Model.ListImagePlanets.FirstOrDefault(x => x.NameJsonPlanet == Model.NamePlanet);
+
 }
 <!DOCTYPE html>
 <html>
@@ -19,178 +23,280 @@
 
 </head>
 <body>
-	<h2 class="text-character">CHARACTERS</h2>
+	<h2 class="text-character text-center">CHARACTERS</h2>
 	<br />
 	<div class="container text-center" style="max-width: 540px;">
-		<div class="row g-0">
-			<div class="col-md-4">
-				<img src=@Model.ImageUrl class="img-fluid rounded-start" alt="imagenNoEncontrada">
-			</div>
-			<div class="col-md-8 text-center">
-				<div class="card-body ">
-					<h5 class="card-title">@Model.NameCharacter</h5>
-					<small class="text-secondary content-right">Gender:</small>
-					<span>@Model.GenderCharacter</span>
-					<small class="text-secondary content-right">Height:</small>
-					<span>@Model.HeightCharacter</span>
-					<br />
-					<small class="text-secondary content-right">Mass:</small>
-					<span>@Model.MassCharacter</span>
-					<small class="text-secondary content-right">Skin Color:</small>
-					<span>@Model.SkinColorCharacter</span>
-					<br />
-					<small class="text-secondary content-right">Hair Color:</small>
-					<span>@Model.HairColorCharacter</span>
-					<small class="text-secondary content-right">HomeWorld:</small>
-					<span>@Model.NamePlanet</span>
+		@if (characterImage == null)
+		{
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src="@defaultImage" class="img-fluid rounded-start" alt="imagenNoEncontrada">
+				</div>
+				<div class="col-md-8 text-center">
+					<div class="card-body ">
+						<h5 class="card-title">@Model.NameCharacter</h5>
+						<small class="text-secondary content-right">Gender:</small>
+						<span>@Model.GenderCharacter</span>
+						<small class="text-secondary content-right">Height:</small>
+						<span>@Model.HeightCharacter</span>
+						<br />
+						<small class="text-secondary content-right">Mass:</small>
+						<span>@Model.MassCharacter</span>
+						<small class="text-secondary content-right">Skin Color:</small>
+						<span>@Model.SkinColorCharacter</span>
+						<br />
+						<small class="text-secondary content-right">Hair Color:</small>
+						<span>@Model.HairColorCharacter</span>
+						<small class="text-secondary content-right">HomeWorld:</small>
+						<span>@Model.NamePlanet</span>
+					</div>
 				</div>
 			</div>
-		</div>
-		<br />
+		}
 
-		@foreach (var hw in Model.ListCharacterImageJson)
+		@if (characterImage != null)
 		{
-			@foreach (var resultPlanet in hw.ResultadoPlanets)
-			{
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src=@characterImage.ImageUrl class="img-fluid rounded-start" alt="imagenNoEncontrada">
+				</div>
+				<div class="col-md-8 text-center">
+					<div class="card-body ">
+						<h5 class="card-title">@Model.NameCharacter</h5>
+						<small class="text-secondary content-right">Gender:</small>
+						<span>@Model.GenderCharacter</span>
+						<small class="text-secondary content-right">Height:</small>
+						<span>@Model.HeightCharacter</span>
+						<br />
+						<small class="text-secondary content-right">Mass:</small>
+						<span>@Model.MassCharacter</span>
+						<small class="text-secondary content-right">Skin Color:</small>
+						<span>@Model.SkinColorCharacter</span>
+						<br />
+						<small class="text-secondary content-right">Hair Color:</small>
+						<span>@Model.HairColorCharacter</span>
+						<small class="text-secondary content-right">HomeWorld:</small>
+						<span>@Model.NamePlanet</span>
+					</div>
+				</div>
+			</div>
+		}
 
-				@if (resultPlanet.NameJsonPlanet == Model.NamePlanet && hw.NameJson == Model.NameCharacter)
-				{
-					<div>
-						<div class="row g-0">
-							<div class="col-md-4">
-								<img src=@resultPlanet.ImageUrlPlanet class="img-fluid rounded-start" alt="imagenNoEncontrada">
+
+	</div>
+	<br />
+
+	<div class="container text-center" style="max-width: 540px;">
+
+		@if (planetImage == null)
+		{
+			<div class="row g-0">
+				<div class="col-md-4">
+
+					<img src="@defaultImage" class="img-fluid rounded-start" alt="imagenNoEncontrada">
+				</div>
+				<div class="col-md-8 text-center">
+					<div class="card-body ">
+						<h5 class="card-title">HomeWorld</h5>
+						<small class="text-secondary content-right">Name:</small>
+						<span>@Model.NamePlanet</span>
+						<small class="text-secondary content-right">Terrain:</small>
+						<span>@Model.TerrainPlanet</span>
+						<br />
+						<small class="text-secondary content-right">Gravity:</small>
+						<span>@Model.GravityPlanet</span>
+						<small class="text-secondary content-right">Climate:</small>
+						<span>@Model.ClimatePlanet</span>
+					</div>
+				</div>
+			</div>
+
+		}
+		@if (planetImage != null)
+		{
+			<div class="row g-0">
+				<div class="col-md-4">
+
+					<img src="@planetImage.ImageUrlPlanet" class="img-fluid rounded-start" alt="imagenNoEncontrada">
+				</div>
+				<div class="col-md-8 text-center">
+					<div class="card-body ">
+						<h5 class="card-title">HomeWorld</h5>
+						<small class="text-secondary content-right">Name:</small>
+						<span>@Model.NamePlanet</span>
+						<small class="text-secondary content-right">Terrain:</small>
+						<span>@Model.TerrainPlanet</span>
+						<br />
+						<small class="text-secondary content-right">Gravity:</small>
+						<span>@Model.GravityPlanet</span>
+						<small class="text-secondary content-right">Climate:</small>
+						<span>@Model.ClimatePlanet</span>
+					</div>
+				</div>
+			</div>
+
+		}
+
+
+	</div>
+
+	<h5 class="card-title text-center">Information about Films</h5>
+	<div class="container film-prueba text-center" style="max-width: 540px;">
+
+		@foreach (var film in Model.ListFilms)
+		{
+			var filmImage = Model.ListImageFilms.FirstOrDefault(x=>x.NameJsonFilm == film.Title);
+			@if (filmImage != null)
+			{
+				<div class="col">
+					<div class="row g-0">
+						<div class="col-md-8 text-center mx-auto">
+							<div class="card-body mx-auto">
+								<h6 class="card-title">@filmImage.NameJsonFilm</h6>
+								<small class="text-secondary content-right">Director:</small>
+								<span>@film.Director</span>
+
 							</div>
-							<div class="col-md-8 text-center">
-								<div class="card-body ">
-									<h5 class="card-title">HomeWorld</h5>
-									<small class="text-secondary content-right">Name:</small>
-									<span>@Model.NamePlanet</span>
-									<small class="text-secondary content-right">Terrain:</small>
-									<span>@Model.TerrainPlanet</span>
-									<br />
-									<small class="text-secondary content-right">Gravity:</small>
-									<span>@Model.GravityPlanet</span>
-									<small class="text-secondary content-right">Climate:</small>
-									<span>@Model.ClimatePlanet</span>
-									<br />
+						</div>
+						<form asp-action="GetTheFilm" asp-route-title="@film.Title" asp-route-name="@Model.NameCharacter">
+							<button class="col-12" type="submit">
+								<div class="col-md-6 mx-auto">
+									<img src="@filmImage.ImageUrlFilm" class="img-fluid rounded-start film-prueba" alt="imagenNoEncontrada" />
 								</div>
+
+							</button>
+						</form>
+					</div>
+				</div>
+			}
+		}
+
+	</div>
+
+	<div class="container" style="max-width: 540px;">
+
+		@foreach (var starship in Model.ListStarship)
+		{
+			var starshipImage = Model.ListImageStarships.FirstOrDefault(x => x.NameJsonStarship == starship.Name);
+			@if (starshipImage == null)
+			{
+				<h5 class="card-title text-center">STARSHIPS</h5>
+				<div class="container text-center mx-auto">
+					<div class="row g-0">
+						<div class="col-md-6 mx-auto">
+							<img src=@defaultImage class="img-fluid rounded-start" alt="imagenNoEncontrada">
+						</div>
+						<div class="col-md-8 text-center mx-auto">
+							<div class="card-body ">
+								<small class="text-secondary content-right">Name:</small>
+								<span>@starship.Name</span>
+								<br />
+								<small class="text-secondary content-right">Model:</small>
+								<span>@starship.Model</span>
+								<br />
+								<small class="text-secondary content-right">Manufacturer:</small>
+								<span>@starship.Manufacturer</span>
+								<br />
+								<small class="text-secondary content-right">Class:</small>
+								<span>@starship.Starship_Class</span>
+								<br />
+
 							</div>
 						</div>
 					</div>
-				}
+				</div>
 			}
-		}
-		<h5 class="card-title">Information about Films</h5>
-		<div class="film-prueba">
-			@foreach (var characterImages in Model.ListCharacterImageJson)
+			@if (starshipImage != null)
 			{
-				@foreach (var resultFilms in characterImages.ResultadoFilms)
-				{
-					@foreach (var film in Model.ListFilms)
-					{
-						@if (characterImages.NameJson == Model.NameCharacter && resultFilms.NameJsonFilm == film.Title)
-						{
+				<h5 class="card-title text-center">STARSHIPS</h5>
+				<div class="container text-center mx-auto">
+					<div class="row g-0">
+						<div class="col-md-6 mx-auto">
+							<img src=@starshipImage.ImageUrlStarship class="img-fluid rounded-start" alt="imagenNoEncontrada">
+						</div>
+						<div class="col-md-8 text-center mx-auto">
+							<div class="card-body ">
+								<small class="text-secondary content-right">Name:</small>
+								<span>@starship.Name</span>
+								<br />
+								<small class="text-secondary content-right">Model:</small>
+								<span>@starship.Model</span>
+								<br />
+								<small class="text-secondary content-right">Manufacturer:</small>
+								<span>@starship.Manufacturer</span>
+								<br />
+								<small class="text-secondary content-right">Class:</small>
+								<span>@starship.Starship_Class</span>
+								<br />
 
-							<div class="col">
-								<div class="row g-0">
-									<div class="col-md-8 text-center mx-auto">
-										<div class="card-body mx-auto">
-											<h6 class="card-title">@resultFilms.NameJsonFilm</h6>
-											<small class="text-secondary content-right">Director:</small>
-											<span>@film.Director</span>
-
-										</div>
-									</div>
-									<form asp-action="GetTheFilm" asp-route-title="@film.Title" asp-route-name="@Model.NameCharacter">
-										<button class="col-12" type="submit">
-											<div class="col-md-6 mx-auto">
-												<img src="@resultFilms.ImageUrlFilm" class="img-fluid rounded-start film-prueba" alt="imagenNoEncontrada" />
-											</div>
-
-										</button>
-									</form>
-								</div>
-							</div>
-
-						}
-					}
-
-				}
-			}
-		</div>
-		<h6 class="card-title">Starships</h6>
-
-		@foreach (var characterImages in Model.ListCharacterImageJson)
-		{
-			@foreach (var resultStarship in characterImages.ResultadoStarships)
-			{
-				@foreach (var starship in Model.ListStarship)
-				{
-					@if (starship.Name == resultStarship.NameJsonStarship)
-					{
-						<div class="container text-center mx-auto">
-							<div class="row g-0">
-								<div class="col-md-6 mx-auto">
-									<img src=@resultStarship.ImageUrlStarship class="img-fluid rounded-start" alt="imagenNoEncontrada">
-								</div>
-								<div class="col-md-8 text-center mx-auto">
-									<div class="card-body ">
-										<small class="text-secondary content-right">Name:</small>
-										<span>@starship.Name</span>
-										<br />
-										<small class="text-secondary content-right">Model:</small>
-										<span>@starship.Model</span>
-										<br />
-										<small class="text-secondary content-right">Manufacturer:</small>
-										<span>@starship.Manufacturer</span>
-										<br />
-										<small class="text-secondary content-right">Class:</small>
-										<span>@starship.Starship_Class</span>
-										<br />
-
-									</div>
-								</div>
 							</div>
 						</div>
-					}
-				}
+					</div>
+				</div>
+
 			}
 		}
-		<h6 class="card-title">Vehicles</h6>
-		@foreach (var characterImages in Model.ListCharacterImageJson)
+	</div>
+
+	<div class="container" style="max-width: 540px;">
+		@foreach (var vehicle in Model.ListVehicle)
 		{
-			@foreach (var resultVehicle in characterImages.ResultadoVehicles)
+			var vehicleImage= Model.ListImageVehicles.FirstOrDefault(x => x.NameJsonVehicle == vehicle.Name);
+			@if (vehicleImage == null)
 			{
-				@foreach (var vehicle in Model.ListVehicle)
-				{
-					@if (vehicle.Name == resultVehicle.NameJsonVehicle && characterImages.NameJson == Model.NameCharacter)
-					{
-						<div class="container text-center mx-auto">
-							<div class="row g-0">
-								<div class="col-md-6 mx-auto">
-									<img src=@resultVehicle.ImageUrlVehicle class="img-fluid rounded-start" alt="imagenNoEncontrada">
-								</div>
-								<div class="col-md-8 text-center mx-auto">
-									<div class="card-body ">
-										<small class="text-secondary content-right">Name:</small>
-										<span>@vehicle.Name</span>
-										<br />
-										<small class="text-secondary content-right">Model:</small>
-										<span>@vehicle.Model</span>
-										<br />
-										<small class="text-secondary content-right">Manufacturer:</small>
-										<span>@vehicle.Manufacturer</span>
-										<br />
-										<small class="text-secondary content-right">Class:</small>
-										<span>@vehicle.Vehicle_Class</span>
-										<br />
-									</div>
-								</div>
+				<h5 class="card-title text-center">VEHICLES</h5>
+				<div class="container text-center mx-auto">
+					<div class="row g-0">
+						<div class="col-md-6 mx-auto">
+							<img src="@defaultImage" class="img-fluid rounded-start" alt="imagenNoEncontrada">
+						</div>
+						<div class="col-md-8 text-center mx-auto">
+							<div class="card-body ">
+								<small class="text-secondary content-right">Name:</small>
+								<span>@vehicle.Name</span>
+								<br />
+								<small class="text-secondary content-right">Model:</small>
+								<span>@vehicle.Model</span>
+								<br />
+								<small class="text-secondary content-right">Manufacturer:</small>
+								<span>@vehicle.Manufacturer</span>
+								<br />
+								<small class="text-secondary content-right">Class:</small>
+								<span>@vehicle.Vehicle_Class</span>
+								<br />
+
 							</div>
 						</div>
-					}
+					</div>
+				</div>
+			}
+			@if (vehicleImage != null)
+			{
+				<h5 class="card-title text-center">VEHICLES</h5>
+				<div class="container text-center mx-auto">
+					<div class="row g-0">
+						<div class="col-md-6 mx-auto">
+							<img src="@vehicleImage.ImageUrlVehicle" class="img-fluid rounded-start" alt="imagenNoEncontrada">
+						</div>
+						<div class="col-md-8 text-center mx-auto">
+							<div class="card-body ">
+								<small class="text-secondary content-right">Name:</small>
+								<span>@vehicle.Name</span>
+								<br />
+								<small class="text-secondary content-right">Model:</small>
+								<span>@vehicle.Model</span>
+								<br />
+								<small class="text-secondary content-right">Manufacturer:</small>
+								<span>@vehicle.Manufacturer</span>
+								<br />
+								<small class="text-secondary content-right">Class:</small>
+								<span>@vehicle.Vehicle_Class</span>
+								<br />
 
-				}
+							</div>
+						</div>
+					</div>
+				</div>
 			}
 		}
 	</div>

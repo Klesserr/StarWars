@@ -24,6 +24,11 @@
 				<input asp-for="Gravity" name="Gravity" value="@Model.Gravity" />
 			</label>
 			<br />
+			<label asp-for="Terrain" class="form-label">
+				<strong>Terreno</strong>
+				<input asp-for="Terrain" name="Terrain" value="@Model.Terrain" />
+			</label>
+			<br />
 			<button type="button" class="boton-borrar-editar btn1 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Cambios </button>
 
 			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

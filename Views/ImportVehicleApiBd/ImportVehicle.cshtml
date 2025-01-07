@@ -1,0 +1,46 @@
+﻿@model IEnumerable<StarWars.Client.Vehicle>
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - @ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+</head>
+<body class="text-center">
+	<h3>Importar Vehiculo</h3>
+
+	<form asp-action="SearchVehicleByName" asp-route-nameVehicle="nameVehicle">
+		<div class="container">
+			<label class="form-label">
+				<strong>Nombre</strong>
+				<input name="nameVehicle" value="" class="form-control" />
+			</label>
+		</div>
+		<input type="submit" value="Importar Vehiculo" class="boton-borrar-editar btn3" />
+	</form>
+
+	<div class="container text-center">
+		<div class="import-name-planets col-12">
+			@foreach (var vehicle in Model)
+			{
+				<p>@vehicle.Name</p>
+			}
+		</div>
+	</div>
+
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+		<a asp-controller="ImportVehicleApiBd" asp-action="MainPage">Volver al listado de Vehiculos</a>
+	</div>
+</body>
+</html>

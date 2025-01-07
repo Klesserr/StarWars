@@ -40,7 +40,7 @@
 			<div class="container col-sm-2 film-prueba">
 				@foreach (var i in Model.ListCharacterImageJson)
 				{
-					<form method="get" asp-action="GetGenericView" asp-route-name="name" asp-route-image="image">
+					<form method="get" asp-action="GetGenericView" asp-route-nameCharacter="nameCharacter" asp-route-imageCharacter="imageCharacter">
 						<img src="@i.ImageUrl" class="mod-img" />
 						<input type="hidden" name="image" value="@i.ImageUrl" />
 						<input type="submit" name="name" value="@i.NameJson" class="boton-name" />

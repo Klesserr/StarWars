@@ -1,0 +1,70 @@
+﻿@model People
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - @ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+</head>
+<body class="text-center">
+	<h3>Importar Personaje</h3>
+
+	<form asp-action="SearchCharacterByName" asp-route-namePlanet="nameCharacter" asp-route-laserSword="laserSword" asp-route-race="race" asp-route-order="order">
+		<label class="form-label">
+			Nombre del personaje:
+			<input name="nameCharacter" value="" class="form-control" />
+		</label>
+		<br />
+
+		<label asp-for="LaserSword" class="form-label">
+			Color de sable
+			<select asp-for="LaserSword" asp-items="@Html.GetEnumSelectList<Laser>();" name="LaserSword">
+				<option value="">Color</option>
+			</select>
+		</label>
+		<br />
+
+		<label asp-for="Order">
+			Orden
+			<select asp-for="Order" asp-items="@Html.GetEnumSelectList<Order>();" name="Order">
+				<option value=""></option>
+			</select>
+		</label>
+		<br />
+
+		<label asp-for="Race">
+			Raza
+			<select asp-for="Race" asp-items="@Html.GetEnumSelectList<Race>();" name="Race">
+				<option value="">Desconocido</option>
+			</select>
+		</label>
+		<br />
+
+		<input type="submit" value="Importar Personaje" class="boton-borrar-editar btn6" />
+	</form>
+
+	<div class="text-center ">
+		<div class="import-name-planets text-center col-12">
+			@foreach (var character in ViewBag.ListAllCharactersApi)
+			{
+				<p>@character.Name</p>
+			}
+		</div>
+	</div>
+	<div>
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+		<br />
+		<a asp-action="Index">Volver al listado de planetas</a>
+	</div>
+</body>
+</html>

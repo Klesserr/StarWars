@@ -1,0 +1,64 @@
+﻿@model StarWars.Models.Vehicle
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - @ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+</head>
+<body class="text-center">
+	<h3>Vehiculo importado con éxito</h3>
+
+	<div class="container">
+		<div class="text-center">
+			<strong>Nombre:</strong> <br />
+			<label asp-for="Name">@Model.Name</label>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="container">
+		<div class="text-center">
+			<strong>Modelo:</strong> <br />
+			<label asp-for="Model">@Model.Model</label>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="container">
+		<div class="text-center">
+			<strong>Fabricación</strong> <br />
+			<label asp-for="Manufacturer">@Model.Manufacturer</label>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="container">
+		<div class="text-center">
+			<strong>Clase</strong> <br />
+			<label asp-for="VehicleClass">@Model.VehicleClass</label>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a> <br />
+		<a asp-controller="ImportVehicleApiBd" asp-action="MainPage">Volver al listado de Vehiculos</a>
+	</div>
+	<br />
+</body>
+</html>

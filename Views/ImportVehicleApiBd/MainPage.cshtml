@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StarWars.Models.Vehicle>
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+	ViewData["Title"] = "Main Page";
+}
+<body>
+	<h3 class="text-center">Listado de Vehiculos Importados desde API</h3>
+	<form asp-action="ImportVehicle">
+		<button class="boton-vehicle">Importar Vehiculo</button>
+	</form>
+	<br />
+	@if (TempData["existVehicleInDb"] != null)
+	{
+		<div class="modal fade" id="vehicleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">El vehículo ya existe</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						@TempData["existVehicleInDb"]
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="boton-borrar-editar btn1" data-bs-dismiss="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="table-light">@Html.DisplayNameFor(modelItem => modelItem.Name)</th>
+				<th class="table-light">@Html.DisplayNameFor(modelItem => modelItem.Model)</th>
+				<th class="table-light">@Html.DisplayNameFor(modelItem => modelItem.Manufacturer)</th>
+				<th class="table-light">@Html.DisplayNameFor(modelItem => modelItem.VehicleClass)</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			@foreach (var vehicle in Model)
+			{
+				<tr>
+					<td>@Html.DisplayFor(modelItem => vehicle.Name)</td>
+					<td>@Html.DisplayFor(modelItem => vehicle.Model)</td>
+					<td>@Html.DisplayFor(modelItem => vehicle.Manufacturer)</td>
+					<td>@Html.DisplayFor(modelItem => vehicle.VehicleClass)</td>
+				
+
+					<td>
+						<form asp-action="SeeDeleteVehicle" asp-route-nameVehicle="@vehicle.Name" method="post">
+							<input type="submit" value="Borrar Vehiculo" class="boton-borrar-editar btn2" />
+						</form>
+
+					</td>
+					<td>
+						<form asp-action="SeeUpdateVehicle" asp-route-nameVehicle="@vehicle.Name" method="post">
+							<input type="submit" value="Editar Vehiculo" class="boton-borrar-editar btn1 " />
+						</form>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var hasMessage = '@TempData["existVehicleInDb"]' !== "";
+			if (hasMessage) {
+				var modal = new bootstrap.Modal(document.getElementById('vehicleModal'));
+				modal.show();
+			}
+		}
+	</script>
+</body>		
+</html>

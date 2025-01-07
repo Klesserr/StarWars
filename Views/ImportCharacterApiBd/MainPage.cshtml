@@ -16,8 +16,28 @@
 		<a asp-controller="ImportCharacterApiBd" asp-action="ImportCharacter" class="boton-planet">Importar Personaje</a>
 	</form>
 	<br />
+
+	@if (TempData["existCharacterInDb"] != null)
+	{
+		<div class="modal fade" id="peopleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Personaje Existente</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						@TempData["existCharacterInDb"]
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="boton-borrar-editar btn1" data-bs-dismiss="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
 	<table class="table text-center ">
-		
+
 		<th class="table-dark">@Html.DisplayNameFor(modelItem => modelItem.Name)</th>
 		<th class="table-dark">@Html.DisplayNameFor(modelItem => modelItem.LaserSword)</th>
 		<th class="table-dark">@Html.DisplayNameFor(modelItem => modelItem.Race)</th>
@@ -32,7 +52,7 @@
 		<th class="table-dark"></th>
 		<th class="table-dark"></th>
 		<th class="table-dark"></th>
-		
+
 		<tbody>
 			<tr>
 				@foreach (var i in Model)
@@ -43,33 +63,33 @@
 					<td>@Html.DisplayFor(model => i.Race)</td>
 					<td>@Html.DisplayFor(model => i.Order)</td>
 					<td>@Html.DisplayFor(model => i.PlanetName)</td>
-					<td>@(i.StarshipsList == null ? "N/A" : string.Join(" ", i.StarshipsList))</td>
-					<td>@Html.DisplayFor(model =>i.Gender)</td>
-					<td>@Html.DisplayFor(model =>i.Hair_Color)</td>
-					<td>@Html.DisplayFor(model =>i.Skin_Color)</td>
-					<td>@Html.DisplayFor(model =>i.Mass)</td>
-					<td>@Html.DisplayFor(model =>i.Height)</td>
+					<td>@string.Join(" ", i.StarshipsList)</td>
+					<td>@Html.DisplayFor(model => i.Gender)</td>
+					<td>@Html.DisplayFor(model => i.Hair_Color)</td>
+					<td>@Html.DisplayFor(model => i.Skin_Color)</td>
+					<td>@Html.DisplayFor(model => i.Mass)</td>
+					<td>@Html.DisplayFor(model => i.Height)</td>
 					<td>
-						<form asp-action="ViewDelete" method="post" asp-route-name="@i.Name">
+						<form asp-action="ViewDelete" method="post" asp-route-name="@i.Name" asp-controller="People">
 							<label asp-for="@i.Name">
 								<input type="submit" value="Borrar Personaje" class="boton-borrar-editar btn2" />
 							</label>
 						</form>
 					</td>
-					
+
 					<td>
-						<form asp-action="ViewUpdate" method="post" asp-route-name="@i.Name">
+						<form asp-action="ViewUpdate" method="post" asp-route-name="@i.Name" asp-controller="People">
 							<label asp-for="@i.Name">
 								<input type="submit" value="Editar Personaje" class="boton-borrar-editar btn1" />
 							</label>
 						</form>
-						<td>
+					<td>
 						<form asp-action="AllInformationAboutCharacter" asp-route-namePlanet="@i.PlanetName"
-							  asp-route-nameStarship= "@i.StarshipsList"
-							asp-route-nameCharacter="@i.Name" method="post">
+							  asp-route-nameStarship="@string.Join(",",@i.StarshipsList)"
+							  asp-route-nameCharacter="@i.Name" method="post" asp-controller="People">
 							<input type="submit" value="Detalles Personaje" class="boton-borrar-editar btn4" />
 						</form>
-						</td>
+					</td>
 					</td>
 				</tr>
 				}
@@ -79,4 +99,14 @@
 	<div class="container">
 		<a asp-controller="Home" asp-action="Index">Volver al Inicio</a>
 	</div>
+	<script type="text/javascript">
+		window.onload = function () {
+			var hasmessage = '@TempData["existCharacterInDb"]' !== "";
+			if(hasmessage)
+			{
+				var modal = new bootstrap.Modal(document.getElementById('peopleModal'));
+				modal.show();
+			}
+		}
+	</script>
 </body>

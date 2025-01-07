@@ -1,0 +1,58 @@
+﻿@model IEnumerable<StarWars.Client.StarshipAPI>
+@{
+	Layout = "~/Views/Shared/_NavLayout.cshtml";
+	
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>StarWars - @ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/apiPage.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/StarWars.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap/dis/css/bootstrap.css" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" rel="stylesheet" />
+	<link href="c:\users\jesús\source\repos\starwars\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" rel="stylesheet" />
+</head>
+<body class="text-center">
+	<h3>Importar Nave</h3>
+	<form asp-action="SearchStarshipByName" asp-route-nameStarship="nameStarship"
+	asp-route-passangers="passangers" asp-route-longitudeStarship="longitudeStarship">
+		<div class="container">
+			<label class="form-label">
+				Nombre de la nave:
+				<input name="nameStarship" value="" class="form-control" />
+			</label>
+		</div>
+		<br />
+		<div class="container">
+			<label class="form-label">
+				Pasajeros a bordo
+				<input name="passangers" value="" class="form-control" />
+			</label>
+		</div>
+		<br />
+		<div class="container">
+			<label class="form-label">
+				Longitud de la nave:
+				<input name="longitudeStarship" value="" class="form-control" />
+			</label>
+		</div>
+		<input type="submit" value="Importar nave" class="boton-borrar-editar btn3" />
+
+		
+	</form>
+	<div class="container text-center">
+		<div class="import-name-planets col-12">
+			@foreach (var starship in Model)
+			{
+				<p>@starship.Name</p>
+			}
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -7,6 +7,25 @@
 <body>
 	<h3 class="text-center">Listado de todos los planetas</h3>
 	<div class="table">
+		@if (TempData["existPlanetInDb"] != null)
+		{
+			<div class="modal fade" id="planetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Planeta Existente</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							@TempData["existPlanetInDb"]
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="boton-borrar-editar btn1" data-bs-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
 		@if (Model != null)
 		{
 			<form asp-action="CreateANewPlanet" method="post">
@@ -14,7 +33,7 @@
 			</form>
 			<br />
 			<form>
-				<a asp-controller="ImportPlanetApiBd"  asp-action="ImportPlanet" class="boton-planet">Importar planeta</a>
+				<a asp-controller="ImportPlanetApiBd" asp-action="ImportPlanet" class="boton-planet">Importar planeta</a>
 			</form>
 			<br />
 			<table class="table">
@@ -46,8 +65,8 @@
 					</form>
 					<br />
 				</tr>
-						
-				
+
+
 				@foreach (var i in Model)
 				{
 
@@ -83,6 +102,15 @@
 			<p>NO HAY PLANETAS DISPONIBLES.</p>
 		}
 	</div>
+	<script type="text/javascript">
+		window.onload = function () {
+			var hasMessage = '@TempData["existPlanetInDb"]' !== "";
+			if (hasMessage) {
+				var modal = new bootstrap.Modal(document.getElementById('planetModal'));
+				modal.show();
+			}
+		}
+	</script>
 </body>
 <div>
 	<a asp-controller="Home" asp-action="Index">Volver al inicio</a>

@@ -14,7 +14,13 @@
 				<th class="table-danger">@Html.DisplayNameFor(m => m.Order)</th>
 				<th class="table-danger">@Html.DisplayNameFor(m => m.Race)</th>
 				<th class="table-danger">@Html.DisplayNameFor(m => m.PlanetName)</th>
-				<th class="table-danger">@Html.DisplayNameFor(m => m.StarshipName)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.StarshipsList)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.Gender)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.Hair_Color)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.Skin_Color)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.Mass)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.Height)</th>
+				<th class="table-danger">@Html.DisplayNameFor(m => m.HomeWorld)</th>
 			</tr>
 
 			@foreach (var i in Model)
@@ -25,7 +31,13 @@
 					<td>@Html.DisplayFor(m => i.Order)</td>
 					<td>@Html.DisplayFor(m => i.Race)</td>
 					<td>@Html.DisplayFor(m => i.PlanetName)</td>
-					<td>@Html.DisplayFor(m => i.StarshipName)</td>
+					<td>@Html.DisplayFor(m => i.StarshipsList)</td>
+					<td>@Html.DisplayFor(m => i.Gender)</td>
+					<td>@Html.DisplayFor(m => i.Hair_Color)</td>
+					<td>@Html.DisplayFor(m => i.Skin_Color)</td>
+					<td>@Html.DisplayFor(m => i.Mass)</td>
+					<td>@Html.DisplayFor(m => i.Height)</td>
+					<td>@Html.DisplayFor(m => i.HomeWorld)</td>
 				</tr>
 			}
 

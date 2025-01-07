@@ -30,21 +30,6 @@
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" asp-controller="Planet" asp-action="Index">Ver todos los planetas</a></li>
 									<li><a class="dropdown-item" asp-controller="Planet" asp-action="CreateANewPlanet">Crea tu nuevo planeta</a></li>
-									<div class="dropdown">
-										<button class="botones estado dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Mostrar Climas
-										</button>
-										<ul class="dropend-menu">
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Bosque">Bosque</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Desierto">Desierto</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Nieve">Nieve</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Action">Action</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Desconocido">Desconocido</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Nubloso">Nubloso</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Salvaje">Salvaje</a></li>
-											<li><a class="dropdown-item" asp-controller="Planet" asp-action="ClimateView" asp-route-nameClimate="Tormenta">Tormenta</a></li>
-										</ul>
-									</div>
 								</ul>
 							</div>
 						</li>
@@ -59,6 +44,13 @@
 								</ul>
 							</div>
 						</li>
+
+						<li class="nav-item">
+							<div class="dropdown espacio-jedi">
+								<a asp-controller="ImportVehicleApiBd" asp-action="MainPage"><button class="botones estado espacio-jedi btn-sm">Vehicles</button></a>
+							</div>
+						</li>
+
 						<li class="nav-item">
 							<div class="dropdown espacio-jedi">
 								<a asp-controller="People" asp-action="SeeAllJedi"><button class="botones estado espacio-jedi btn-sm">JEDI</button></a>

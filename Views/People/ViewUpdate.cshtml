@@ -1,40 +1,45 @@
-﻿@model StarWars.Models.People
+﻿@model People
 @{
 	ViewData["Title"] = "Vista Borrar";
 	Layout = "~/Views/Shared/_NavLayout.cshtml";
 }
 <body>
-	<h2>Detalles del personaje a eliminar</h2>
+	<h2>Editar Personaje</h2>
 	<div class="container">
 		<table class="table">
-			<form asp-action="DeleteOnePeople" method="post">
-				
+			<form asp-action="UpdateOnePeople" method="post">
 				<label asp-for="Name">
 					<strong>Nombre</strong>
 					<input asp-for="Name" type="text" value="@Model.Name" readonly class="form-control-plaintext" />
 				</label><br />
 				<label asp-for="LaserSword" class="form-label">
-					<strong>Color Sable</strong>
-					<input type="text" asp-for="LaserSword" value="@Model.LaserSword" readonly class="form-control-plaintext"/>
+					Color de sable
+					<select asp-for="LaserSword" asp-items="@Html.GetEnumSelectList<Laser>();" name="LaserSword">
+						<option value="">Color</option>
+					</select>
 				</label>
 				<br />
-				<label asp-for="Order">
-					<strong>Orden</strong>
-					<input type="text" asp-for="Order" value="@Model.Order" readonly class="form-control-plaintext" />
+				<label asp-for="Order" class="form-label">
+					Orden
+					<select asp-for="Order" asp-items="@Html.GetEnumSelectList<Order>();" name="Order">
+						<option></option>
+					</select>
 				</label>
 				<br />
 				<label asp-for="Race">
-					<strong>Raza</strong>
-					<input type="text" asp-for="Race" value="@Model.Race" readonly class="form-control-plaintext" />
+					Raza
+					<select asp-for="Race" asp-items="@Html.GetEnumSelectList<Race>();" name="Race">
+						<option value=""></option>
+					</select>
 				</label>
 				<br />
 				<label asp-for="StarshipsList">
 					<strong>Nave</strong>
-					@foreach(var nameStarship in Model.StarshipsList)
+					@foreach (var nameStarship in Model.StarshipsList)
 					{
 						<input type="text" asp-for="StarshipsList" value="@nameStarship" readonly class="form-control-plaintext" />
 					}
-					
+
 				</label>
 				<br />
 				<label asp-for="PlanetName">
@@ -46,29 +51,29 @@
 					<strong>Género</strong>
 					<input type="text" asp-for="Gender" value="@Model.Gender" readonly class="form-control-plaintext" />
 				</label>
-				<br />
+				<br /><br />
 				<label asp-for="Hair_Color">
-					<strong>Color Pelo</strong>
-					<input type="text" asp-for="Hair_Color" value="@Model.Hair_Color" readonly class="form-control-plaintext"/>
+					Color Pelo
+					<input type="text" asp-for="Hair_Color" value="@Model.Hair_Color" />
 				</label>
-				<br />
+				<br /><br />
 				<label asp-for="Skin_Color">
-					<strong>Color Piel</strong>
-					<input type="text" asp-for="Skin_Color" value="@Model.Skin_Color" readonly class="form-control-plaintext"/>
+					Color Piel
+					<input type="text" asp-for="Skin_Color" value="@Model.Skin_Color" />
+				</label>
+				<br /><br />
+				<label asp-for="Mass">
+					Masa
+					<input type="text" asp-for="Mass" value="@Model.Mass" />
 				</label>
 				<br />
-				<label asp-for="Mass">
-					<strong>Masa</strong>
-					<input type="text" asp-for="Mass" value="@Model.Mass" readonly class="form-control-plaintext"/>
-				</label>
 				<br />
 				<label asp-for="Height">
-					<strong>Peso</strong>
-					<input type="text" asp-for="Height" value="@Model.Height" readonly class="form-control-plaintext" />
+					Peso
+					<input type="text" asp-for="Height" value="@Model.Height" />
 				</label>
 				<br />
-				
-				<input type="submit" value="Borrar" class="boton-borrar-editar btn2" />
+				<input type="submit" value="Editar" class="boton-borrar-editar btn1" />
 			</form>
 			<br />
 			<a asp-action="Index">Volver</a>
