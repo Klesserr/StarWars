@@ -164,6 +164,18 @@
         color: #c60e48;
     }
 
+.boton-vehicle {
+    border-radius: 12px;
+    padding: 2px 5px;
+    background-color: #d3b0b0f2;
+    border: 2px solid #d3b0b0f2;
+    text-decoration: none;
+    color: white;
+}
+    .boton-vehicle:hover {
+        background-color: white;
+        color: #d3b0b0f2;
+    }
 .boton-borrar-editar {
     border: none;
     color: black;
@@ -259,4 +271,11 @@ td {
     
     background-color: white;
     border: none;
+}
+.notfound {
+    background-image: url(../images/notfound.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }

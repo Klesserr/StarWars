@@ -36,6 +36,11 @@ body{
     margin-right: 400px;
     text-align:center;
 }
+.import-name-planets {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    text-align: center;
+}
 .film-prueba {
     display: grid;
     grid-template-columns: repeat(2,1fr);
