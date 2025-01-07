@@ -4,6 +4,7 @@ using StarWars.Models;
 using StarWars.Data;
 using System.Net.Http.Headers;
 using StarWars.Client;
+using StarWars.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StarWarsContext>(options =>
@@ -11,6 +12,18 @@ builder.Services.AddDbContext<StarWarsContext>(options =>
 
 // Add services to the container.
 builder.Services.AddScoped<Character>();
+builder.Services.AddScoped<PeopleController>();
+builder.Services.AddScoped<GenericController>();
+builder.Services.AddScoped<SwapiController>();
+builder.Services.AddScoped<InitialController>();
+builder.Services.AddScoped<CharacterAPIController>();
+builder.Services.AddScoped<PlanetAPIController>();
+builder.Services.AddScoped<PlanetController>();
+builder.Services.AddScoped<StarshipAPIController>();
+builder.Services.AddScoped<StarshipController>();
+builder.Services.AddScoped<VehicleAPIController>();
+builder.Services.AddScoped<FilmAPIController>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddHttpClient();
