@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarWars.Data;
 
@@ -10,9 +11,11 @@ using StarWars.Data;
 namespace StarWars.Migrations
 {
     [DbContext(typeof(StarWarsContext))]
-    partial class StarWarsContextModelSnapshot : ModelSnapshot
+    [Migration("20241004154005_ChangePkAndAddColumnsInPeople")]
+    partial class ChangePkAndAddColumnsInPeople
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +63,8 @@ namespace StarWars.Migrations
                     b.Property<string>("Skin_Color")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StarshipsList")
+                    b.Property<string>("StarshipName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Name");

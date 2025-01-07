@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarWars.Data;
 
@@ -10,9 +11,11 @@ using StarWars.Data;
 namespace StarWars.Migrations
 {
     [DbContext(typeof(StarWarsContext))]
-    partial class StarWarsContextModelSnapshot : ModelSnapshot
+    [Migration("20240923094954_ChangeNameColumnStarship")]
+    partial class ChangeNameColumnStarship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,26 +26,18 @@ namespace StarWars.Migrations
 
             modelBuilder.Entity("StarWars.Models.People", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Hair_Color")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Height")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HomeWorld")
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("LaserSword")
                         .IsRequired()
                         .HasColumnType("nvarchar(24)");
 
-                    b.Property<string>("Mass")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Order")
@@ -57,13 +52,11 @@ namespace StarWars.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(24)");
 
-                    b.Property<string>("Skin_Color")
+                    b.Property<string>("StarshipName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StarshipsList")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.ToTable("People");
                 });
@@ -108,25 +101,6 @@ namespace StarWars.Migrations
                     b.HasKey("Name");
 
                     b.ToTable("Starship");
-                });
-
-            modelBuilder.Entity("StarWars.Models.Vehicle", b =>
-                {
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Manufacturer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VehicleClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Name");
-
-                    b.ToTable("Vehicle");
                 });
 #pragma warning restore 612, 618
         }
