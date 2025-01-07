@@ -40,6 +40,10 @@ namespace StarWars.ViewModel
 		public List<PlanetAPI> ListPlanetAPI {  get; set; }
 		//
 		public List<CharacterImageJson> ListCharacterImageJson { get; set; }
+		public List<ResultadoFilms> ListImageFilms {  get; set; }
+		public List<ResultadoStarships> ListImageStarships {  get; set; }
+		public List<ResultadoVehicles> ListImageVehicles {  get; set; }
+		public List<ResultadoPlanets> ListImagePlanets {  get; set; }
 		public string NameJson { get; set; }
 		public string ImageUrl { get; set; }
 		
