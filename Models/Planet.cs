@@ -11,10 +11,10 @@ namespace StarWars.Models
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string Name { get; set; }
 		[DisplayName("Clima")]
-        [MinLength(4 ,ErrorMessage ="Debe tener un mínimo de 4 caracteres")]
 		public string Climate { get; set; }
 		[DisplayName("Gravedad")]
-        
-		public int Gravity {  get; set; }
+		public string Gravity {  get; set; }
+		[DisplayName("Terreno")]
+		public string Terrain {  get; set; }
     }
 }

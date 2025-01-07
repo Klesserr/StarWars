@@ -19,9 +19,8 @@ namespace StarWars.Models
 		[DisplayName("Pasajeros a bordo")]
 		[Required(ErrorMessage = "No puede dejarse vacío")]
 		public double MaxPassengers { get; set; }
-		[DisplayName("Armamento")]
-		[MinLength(6, ErrorMessage = "Mínimo 6 caracteres")]
-		[Required]
-		public string Armament { get; set; }
+		
+		[DisplayName("Clase")]
+		public string Class_Starship { get; set; }
     }
 }

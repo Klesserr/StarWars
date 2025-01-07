@@ -14,7 +14,6 @@ namespace StarWars.Models
 	{
 
 		[Key]
-		public int Id { get; set; }
 		[DisplayName("Nombre")]
 		[Required(ErrorMessage = "Campo obligatorio.")]
 		[MinLength(4, ErrorMessage = "Debe introducir mínimo 4 caracteres")]
@@ -34,14 +33,25 @@ namespace StarWars.Models
 		[DisplayName("Planeta")]
 		[Required(ErrorMessage = "El planeta es obligatorio")]
 		public string PlanetName { get; set; }
-		[DisplayName("Nave")]
-		[Required(ErrorMessage = "La nave es obligatoria")]
-		public string StarshipName { get; set; }
-
+	
+		[DisplayName("Género")]
+		public string Gender { get; set; }
+		[DisplayName("Peso")]
+		public string Height { get; set; }
+		[DisplayName("Masa")]
+		public string Mass { get; set; }
+		[DisplayName("Color Pelo")]
+		public string Hair_Color { get; set; }
+		[DisplayName("Color Piel")]
+		public string Skin_Color { get; set; }
+		[DisplayName("Hogar")]
+		public string HomeWorld { get; set; }
+		[DisplayName("Naves usadas")]
+		public List<string> StarshipsList { get; set; } = new List<string>();
 	}
 	public enum Laser
 	{
-		Rojo, Azul, Verde, Amarillo, Morado, Naranja, Cyan
+		Rojo, Azul, Verde, Amarillo, Morado, Naranja, Cyan, SinLaser
 	}
 	public enum Race
 	{
