@@ -17,5 +17,6 @@ namespace StarWars.Data
         public DbSet<People> People { get; set; } = default!;
         public DbSet<Planet> Planet { get; set; } = default!;
         public DbSet<Starship> Starship { get; set; } = default!;
+        public DbSet<Vehicle> Vehicle { get; set; } = default!;
     }
 }
