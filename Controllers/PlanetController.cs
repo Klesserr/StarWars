@@ -32,7 +32,7 @@ namespace StarWars.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[Route("CrearPlaneta")]
-		public async Task<IActionResult> CreateANewPlanet([Bind("Name,Climate,Gravity")] Planet planet)
+		public async Task<IActionResult> CreateANewPlanet([Bind("Name,Climate,Gravity,Terrain")] Planet planet)
 		/*Bind:Especifica que propiedades de un modelo(en este claso planeta) se deben incluir durante el
 		  enlace de datos desde formularios.*/
 		{
@@ -111,7 +111,7 @@ namespace StarWars.Controllers
 			}
 			return View(await _context.Planet.OrderBy(p=>p.Name).ToListAsync());
 		}
-
+		
 		/*public async Task<Planet> Get()
 		{
 			return await _context.Planet.FirstOrDefaultAsync(p => p.Name == "Tatooine");

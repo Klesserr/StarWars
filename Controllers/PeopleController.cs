@@ -42,7 +42,7 @@ namespace StarWars.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[Route("CrearPersonaje")]
-		public async Task<IActionResult> CreateOnePeople([Bind("Name,LaserSword,Order,Race,PlanetName,StarshipName")] People people)
+		public async Task<IActionResult> CreateOnePeople([Bind("Name,StarshipsList,LaserSword,Order,Race,PlanetName,Gender,Skin_Color,Hair_Color,Mass,Height,HomeWorld")] People people)
 		{
 			if (ModelState.IsValid)
 			{
@@ -70,7 +70,6 @@ namespace StarWars.Controllers
 		[Route("Editar")]
 		public async Task<IActionResult> UpdateOnePeople(People people)
 		{
-
 			if (ModelState.IsValid)
 			{
 				_context.People.Update(people);
@@ -83,9 +82,13 @@ namespace StarWars.Controllers
 		[ValidateAntiForgeryToken]
 		[Route("BorrarPersonaje")]
 
-		public async Task<IActionResult> ViewDelete(int id)
+		public async Task<IActionResult> ViewDelete(string name)
 		{
-			return View(await _context.People.FirstOrDefaultAsync(p => p.Id == id));
+			return View(await _context.People.FirstOrDefaultAsync(p => p.Name == name));
+		}
+		public async Task<IActionResult> ViewUpdate(string name)
+		{
+			return View(await _context.People.FirstOrDefaultAsync(p => p.Name == name));
 		}
 		public async Task<ActionResult> Index()
 		{
@@ -101,20 +104,27 @@ namespace StarWars.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[Route("Información")]
-		public IActionResult AllInformationAboutCharacter(string namePlanet, string nameStarship, int id)
+		public IActionResult AllInformationAboutCharacter(string namePlanet, List<string> nameStarship, string nameCharacter)
 		{
+			
 			if (ModelState.IsValid)
 			{
 				List<Planet> getPlanetInfo = GetAllInformationPlanet(namePlanet);
-				List<Starship> getStarshipInfo = GetAllInformationStarship(nameStarship);
-				People p = GetAllInformation(id);
-
+				//List<Starship> getStarshipInfo = GetAllInformationStarship(nameStarship);
+				People p = GetAllInformation(nameCharacter);
+				
 				ThreeInOneViewModel three = new ThreeInOneViewModel()
 				{
 					PlanetList = getPlanetInfo,
-					StarshipList = getStarshipInfo,
+					Starships = nameStarship,
 					NamePeople = p.Name,
 					ColorLaser = p.LaserSword,
+					Gender = p.Gender,
+					Hair_Color = p.Hair_Color,
+					Skin_Color = p.Skin_Color,
+					Mass = p.Mass,
+					Height = p.Height,
+					HomeWorld = p.HomeWorld,
 					Race = p.Race,
 					Order = p.Order,
 				};
@@ -168,9 +178,9 @@ namespace StarWars.Controllers
 
 			return queryPlanet.ToList();
 		}
-		public People GetAllInformation(int id)
+		public People GetAllInformation(string nameCharacter)
 		{
-			return _context.People.FirstOrDefault(p => p.Id == id);
+			return _context.People.FirstOrDefault(p => p.Name == nameCharacter);
 		}
 	}
 }

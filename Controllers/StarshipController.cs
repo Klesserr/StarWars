@@ -29,7 +29,7 @@ namespace StarWars.Controllers
         [Route("Starship/CrearNave")]
         
         
-        public async Task<IActionResult> CreateOneStarship([Bind("Name,Model,Longitude,MaxPassengers,Armament")] Starship starship)
+        public async Task<IActionResult> CreateOneStarship([Bind("Name,Model,Longitude,MaxPassengers,Class_Starship")] Starship starship)
         {
             if (ModelState.IsValid)
             {
@@ -39,7 +39,7 @@ namespace StarWars.Controllers
                     Model = starship.Model,
                     Longitude = starship.Longitude,
                     MaxPassengers = starship.MaxPassengers,
-                    Armament = starship.Armament
+                    Class_Starship = starship.Class_Starship
                 };
                 _context.Starship.Add(stship);
                 await _context.SaveChangesAsync();
